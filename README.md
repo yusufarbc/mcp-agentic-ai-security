@@ -2,7 +2,7 @@
 
 ## Live Web Page
 
-**https://yusufarbc.github.io/MCP-Agentic-Security-Review/**
+**https://yusufarbc.github.io/mcp-agentic-ai-security/**
 
 This repository aggregates academic work examining the architectural, security, and defense dimensions of the Model Context Protocol (MCP) ecosystem, along with a visual media set and an 18-paper reference library. The root `index.html` and the live page on GitHub Pages summarize this content on a single screen.
 

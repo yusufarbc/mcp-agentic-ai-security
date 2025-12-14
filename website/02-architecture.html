@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Architecture - MCP Agentic Security Review</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1><a href="index.html" style="color: var(--text);">MCP Agentic Security Review</a></h1>
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="01-overview.html">Overview</a>
+                <a href="02-architecture.html">Architecture</a>
+                <a href="03-security-and-governance.html">Security</a>
+                <a href="04-performance-and-optimization.html">Performance</a>
+                <a href="05-use-cases-and-ecosystem.html">Use Cases</a>
+                <a href="06-insights-and-future.html">Insights</a>
+                <a href="07-literature-review.html">Literature</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="doc-nav">
+            <a href="01-overview.html">← Previous: Overview</a>
+            <a href="index.html">Back to Home</a>
+            <a href="03-security-and-governance.html">Next: Security →</a>
+        </div>
+
+        <article class="content">
+            <h1>MCP Architecture & Mechanics</h1>
+
+            <h2>High-Level Architecture</h2>
+            <p>The Model Context Protocol operates on a distinct <strong>Client-Host-Server</strong> model designed to
+                separate the AI's reasoning logic from the specific implementations of external tools.</p>
+
+            <h3>Components</h3>
+            <ol>
+                <li><strong>MCP Host:</strong>
+                    <ul>
+                        <li>The user-facing application where the AI model "lives" (e.g., Claude Desktop, Cursor IDE, or
+                            a custom AI application).</li>
+                        <li>It manages the user interface, the connection lifecycle, and security boundaries.</li>
+                    </ul>
+                </li>
+                <li><strong>MCP Client:</strong>
+                    <ul>
+                        <li>A protocol-level component embedded within the Host.</li>
+                        <li>It establishes a 1:1 connection with an MCP Server.</li>
+                        <li>It translates the LLM's natural language intent into structured MCP requests (JSON-RPC).
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>MCP Server:</strong>
+                    <ul>
+                        <li>A standalone service that exposes specific capabilities (Tools, Resources, Prompts).</li>
+                        <li>It effectively acts as a gateway or "driver" for an external service (like Stripe, GitHub,
+                            or a local database).</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <figure style="margin: 2rem 0;">
+                <img src="images/mcp_architecture.png" alt="MCP Client-Host-Server Architecture"
+                    style="width: 100%; border-radius: 16px; border: 1px solid var(--border);">
+                <figcaption style="margin-top: 0.75rem; color: var(--muted); text-align: center; font-size: 0.9rem;">
+                    Detailed view of the MCP architecture showing the interaction between Host, Client, and Server
+                    components
+                </figcaption>
+            </figure>
+
+            <div class="diagram">
+                <pre>
+User ←→ MCP Host ←→ MCP Client ⇄ MCP Server ←→ External System/API
+        </pre>
+            </div>
+
+            <h2>Transport Layers</h2>
+            <p>MCP is transport-agnostic but primarily defines two standard transport mechanisms:</p>
+
+            <h3>1. Stdio (Standard Input/Output)</h3>
+            <ul>
+                <li><strong>Use Case:</strong> Local tools, secure enterprise environments, IDE integrations.</li>
+                <li><strong>Mechanism:</strong> The Host spawns the Server as a customized subprocess. Communication
+                    happens over standard input (stdin) and output (stdout).</li>
+                <li><strong>Pros:</strong> Ultra-low latency, highly secure (data never leaves the machine/network),
+                    simple to deploy locally.</li>
+                <li><strong>Cons:</strong> Limited to the local machine; cannot easily be accessed remotely without
+                    tunneling.</li>
+            </ul>
+
+            <h3>2. HTTP with SSE (Server-Sent Events)</h3>
+            <ul>
+                <li><strong>Use Case:</strong> Cloud-hosted agents, distributed systems, SaaS integrations.</li>
+                <li><strong>Mechanism:</strong>
+                    <ul>
+                        <li><strong>Server-to-Client:</strong> Uses Server-Sent Events (SSE) to push messages and
+                            notifications.</li>
+                        <li><strong>Client-to-Server:</strong> Uses standard HTTP POST requests.</li>
+                    </ul>
+                </li>
+                <li><strong>Pros:</strong> Scalable, works over standard web infrastructure, firewall-friendly.</li>
+                <li><strong>Cons:</strong> Higher latency due to HTTP overhead; requires TLS and authentication for
+                    security.</li>
+            </ul>
+
+            <h2>Server Lifecycle</h2>
+            <p>An MCP server's life involves four key stages:</p>
+            <ol>
+                <li><strong>Creation:</strong> Defining capabilities (tools/resources) and implementing the logic.</li>
+                <li><strong>Deployment:</strong> Running the server either locally (stdio) or on a cloud platform
+                    (HTTP/SSE).</li>
+                <li><strong>Operation:</strong> Active handling of requests (ListTools, CallTool, ReadResource).</li>
+                <li><strong>Maintenance:</strong> Updates, logging, and security patching.</li>
+            </ol>
+
+            <h2>Automation: The AutoMCP Revolution</h2>
+            <p>One of the significant barriers to MCP adoption was the manual effort required to build servers for
+                existing APIs. This "boilerplate" problem has been addressed by tools like <strong>AutoMCP</strong>.</p>
+            <ul>
+                <li><strong>What it is:</strong> A compiler that takes a standard <strong>OpenAPI Specification</strong>
+                    (Swagger) as input.</li>
+                <li><strong>What it does:</strong> Automatically generates a fully functional MCP server.</li>
+                <li><strong>Impact:</strong> It reduces the time to "agent-enable" an API from days to minutes.</li>
+                <li><strong>Reliability:</strong> Studies show ~99.9% success rates for generated servers after minor
+                    adjustments to the source API spec (average 19 lines of config).</li>
+            </ul>
+            <p>This automation capability is crucial for scaling the ecosystem, allowing thousands of existing REST APIs
+                to become "agent-ready" almost overnight.</p>
+
+            <figure style="margin: 2rem 0;">
+                <img src="images/mcp_protocol.png" alt="MCP Protocol Flow"
+                    style="width: 100%; border-radius: 16px; border: 1px solid var(--border);">
+                <figcaption style="margin-top: 0.75rem; color: var(--muted); text-align: center; font-size: 0.9rem;">
+                    MCP protocol communication flow between clients and servers
+                </figcaption>
+            </figure>
+        </article>
+
+        <div class="doc-nav">
+            <a href="01-overview.html">← Previous: Overview</a>
+            <a href="index.html">Back to Home</a>
+            <a href="03-security-and-governance.html">Next: Security →</a>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Agentic Security Review</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1>MCP Agentic Security Review</h1>
+      <div class="links">
+        <a href="#what-is-mcp">What is MCP?</a>
+        <a href="#docs">Documentation</a>
+        <a href="#forecast">Repo Map</a>
+        <a href="#security">Security</a>
+        <a href="#media">Media</a>
+        <a href="#references">References</a>
+        <a href="#usage">Usage</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>An academic security review exploring the Model Context Protocol ecosystem</h2>
+      <p>
+        This repository serves as a literature library consisting of a paper draft, media assets, and 18 PDF references,
+        explaining the technical, operational, and communication layers of MCP-focused security research. We have consolidated
+        the details of this academic narrative in English on a single page.
+      </p>
+      <div class="hero-meta">
+        <div class="meta-card">
+          <span>Study Type</span>
+          <strong>Academic Paper (IEEE Format)</strong>
+        </div>
+        <div class="meta-card">
+          <span>Source Content</span>
+          <strong>paper/paper.tex + reference/Readme.md</strong>
+        </div>
+        <div class="meta-card">
+          <span>Media</span>
+          <strong>Infographic, Architecture, Demo Video</strong>
+        </div>
+        <div class="meta-card">
+          <span>Security Perspective</span>
+          <strong>Threat Taxonomy, IPC + Guard Models</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="what-is-mcp" class="glass-panel">
+      <h3>What is the Model Context Protocol (MCP)?</h3>
+      <p>
+        You can think of the Model Context Protocol (MCP) as an <strong>"App Store"</strong> or a universal
+        <strong>"USB-C port"</strong> for AI. Just as the App Store is a standard platform that allows you to easily
+        add new features (apps) to your phone, MCP simplifies adding new capabilities (tools) to AI models. It grows
+        the ecosystem, enhances security, and paves the way for innovation with a "write once, run anywhere" logic.
+      </p>
+      <div class="grid grid-2" style="align-items: start;">
+        <div>
+          <h4>In Practice</h4>
+          <ul>
+            <li><strong>Complex World (Without MCP):</strong> Every AI (LLM) needs a special "adapter" to connect to a different
+              tool (weather API, calculator, database, etc.). This is like carrying hundreds of different chargers;
+              inefficient, complex, and unmanageable.</li>
+            <li><strong>Simple World (With MCP):</strong> MCP offers a universal standard for all tools and models.
+              When a tool is MCP-compliant, it can be instantly used by all MCP-supported AIs.</li>
+          </ul>
+        </div>
+        <div>
+          <figure style="margin: 0;">
+            <a href="media/client-server-model.png" target="_blank">
+              <img src="media/client-server-model.png" alt="MCP Architecture">
+            </a>
+            <figcaption>MCP eliminates complexity by establishing a standard bridge between different Large Language Models (LLMs) and tools.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="grid grid-2" style="align-items: start; margin-top: 2rem;">
+        <div>
+          <h4>Technical Operation</h4>
+          <p>The core flow of MCP occurs between a client (usually the LLM itself or an agent) and an MCP server
+            (hosting the tool). This process consists of a few simple steps:</p>
+          <ol>
+            <li><strong>Discovery:</strong> The client asks what tools are available on the server and what functions
+              (e.g., `getCurrentWeather`) with which parameters (`location`) these tools offer.
+            </li>
+            <li><strong>Request:</strong> When the LLM decides to use a specific tool, the client sends a request to the
+              server in a standard JSON format to invoke that tool's function.</li>
+            <li><strong>Execution:</strong> The MCP server receives the incoming request, validates it, and runs the code
+              of the relevant tool.</li>
+            <li><strong>Response:</strong> The result obtained after the tool runs (e.g., weather information) is sent back
+              to the client in a standard JSON format. The LLM uses this output to generate a response for the user.</li>
+          </ol>
+        </div>
+        <div>
+          <figure style="margin: 0;">
+            <a href="media/protocol.png" target="_blank">
+              <img src="media/protocol.png" alt="MCP Protocol Flow">
+            </a>
+            <figcaption>Standardized discovery, request, and response cycle between client and server.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="docs" class="glass-panel">
+      <div class="tag-row">
+        <span class="tag">English</span>
+        <span class="tag">Documentation</span>
+        <span class="tag">Comprehensive</span>
+      </div>
+      <h3>Comprehensive MCP Documentation</h3>
+      <p>In-depth English documentation covering all aspects of the Model Context Protocol, from fundamentals to
+        advanced security considerations.</p>
+      <div class="grid grid-2">
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4><a href="01-overview.html">01. Overview</a></h4>
+          <p>Introduction to MCP, the N×M integration problem, and core primitives (Tools, Resources, Prompts).</p>
+        </div>
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4><a href="02-architecture.html">02. Architecture</a></h4>
+          <p>Client-Host-Server model, transport layers (Stdio, HTTP/SSE), and AutoMCP automation.</p>
+        </div>
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4><a href="03-security-and-governance.html">03. Security & Governance</a></h4>
+          <p>Threat landscape (IPI, Tool Poisoning), defense strategies, and governance frameworks.</p>
+        </div>
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4><a href="04-performance-and-optimization.html">04. Performance</a></h4>
+          <p>Context bloat challenges, Code Execution paradigm, and optimization best practices.</p>
+        </div>
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4><a href="05-use-cases-and-ecosystem.html">05. Use Cases</a></h4>
+          <p>Real-world applications across industries and multi-agent system patterns.</p>
+        </div>
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4><a href="06-insights-and-future.html">06. Insights & Future</a></h4>
+          <p>Strategic insights, hybrid architectures, and the future of agentic systems.</p>
+        </div>
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4><a href="07-literature-review.html">07. Literature Review</a></h4>
+          <p>Academic context, research findings, and comprehensive bibliography.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-panel" id="study">
+      <h3>Brief Summary of the Research</h3>
+      <p>The paper systematically puts the MCP server lifecycle (creation, deployment, operation, maintenance) and
+        security risks into a table.</p>
+      <ul>
+        <li><strong>Architectural Boundaries:</strong> The Host/Client side manages tool discovery, while JSON-RPC servers
+          provide resources and tools; transport layer choices (STDIO vs HTTPS/SSE) and authentication (OAuth, mTLS,
+          scoped token) determine the attack surface.</li>
+        <li><strong>Four Actors, 16 Scenarios:</strong> Developer-originated (shadow server, namespace collision), external
+          attacker (indirect prompt injection, setup fraud), malicious user (STAC chain, sandbox escape, session reuse),
+          and software/configuration errors (credential leak, command injection).</li>
+        <li><strong>Empirical Data:</strong> A scan of 1,899 servers found 7.2% general vulnerabilities, 5.5% tool
+          poisoning risk, 66% code smells, and 14.4% error patterns; these findings are missed without MCP-specific scanners.</li>
+        <li><strong>Benchmark Results:</strong> MCPGAUGE does not provide benefit in all scenarios; < 60% success was observed
+          in MCP-Universe & LiveMCP-101; MCPToolBench++ highlights context diversity bottlenecks; AutoMalTool can bypass
+          defenses, but MCP-Guard achieves 96% detection accuracy.</li>
+        <li><strong>Defense Strategies:</strong> IFC + taint tracking, deployment-specific sandbox profiles, TLS/mTLS +
+          OAuth 2.1 resource indicators, short-lived scoped tokens, plan-based testing + logging + red teaming, signed
+          packages/SBOM, and automated server generation from OpenAPI.</li>
+      </ul>
+    </section>
+
+    <section id="forecast" class="glass-panel">
+      <div class="tag-row">
+        <span class="tag">Roadmap</span>
+        <span class="tag">Development</span>
+        <span class="tag">Reference</span>
+      </div>
+      <h3>Brief Summary of Each Layer in the Repo</h3>
+      <div class="grid grid-3">
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4>paper/</h4>
+          <p>Contains <code>paper.tex</code> written with IEEEtran template, compilation output <code>paper.pdf</code>,
+            and additional log+aux files.</p>
+          <ul>
+            <li>MCP Architecture, STDIO/HTTP transport, threat mitigation</li>
+            <li>Security appendices (Appendix A-D) and bibliography</li>
+            <li>Client-server flow with <code>protocol.png</code></li>
+          </ul>
+        </div>
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4>media/</h4>
+          <p>Visual narrative and demo video. Includes YouTube embed + local MP4 file.</p>
+          <ul>
+            <li>Infographic: Comparison of MCP/ACP/A2A/ANP protocols</li>
+            <li>MCP architecture & NotebookLM posters (MCP.png, model.png)</li>
+            <li>Threat vectors visual (post.jpeg) and lightweight diagrams (client-server-model.png, protocol.png)</li>
+            <li>AI Agents demo (MP4 + YouTube embed)</li>
+          </ul>
+        </div>
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4>reference/</h4>
+          <p>Library of 01-18 numbered PDFs; Readme file summarizes each source in English.</p>
+          <ul>
+            <li>Security-focused benchmarks, stress tests, defense frameworks</li>
+            <li>MCPGAUGE, AutoMalTool, A2AS, MCP-Guard</li>
+            <li>Economic agents, transport systems, bioinformatics MCP</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-panel" id="security">
+      <h3>Security and Threat Landscape</h3>
+      <div class="grid grid-2">
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4>Threat Taxonomy</h4>
+          <ul>
+            <li>4 actors (malicious developer, malicious user, external attacker, software errors)</li>
+            <li>16 scenarios: tool poisoning, prompt injection, input validation errors</li>
+            <li>7.2% vulnerabilities, 5.5% tool poisoning, 66% code smells in 1899 server analysis</li>
+            <li>Benchmark examples: MCPGAUGE, MCPToolBench++, LiveMCP-101</li>
+            <li>Red team output: AutoMalTool can bypass most defenses; MCP-Guard reaches 96% accuracy</li>
+          </ul>
+        </div>
+        <div class="glass-panel" style="padding:1.5rem">
+          <h4>Defense Layers</h4>
+          <ul>
+            <li>IFC + taint-tracking, least privilege, sandbox profiles</li>
+            <li>TLS/mTLS, OAuth 2.1 + scoped token, SBOM and signed package</li>
+            <li>Guard models, AutoMalTool red team procedures</li>
+            <li>AutoMCP compiler from OpenAPI, plan-based tests</li>
+            <li>MCP scanners for CI/CD, human-approved guard flows, short-lived credentials</li>
+          </ul>
+        </div>
+      </div>
+      <p style="color: var(--muted); margin-top: 1rem;">Layered controls are recommended against Prompt injection,
+        data poisoning, DoS, and privacy violations; reference papers detail FPETS/FHE, rate limiting, and guard
+        certificates.</p>
+    </section>
+
+    <section class="glass-panel" id="media">
+      <h3>Media Library</h3>
+      <p>`media/README.md` contains reuse guidelines and YouTube embed code for each asset. The gallery below is a quick
+        summary of all files in the folder.</p>
+      <div class="grid grid-2">
+        <figure class="glass-panel" style="padding:1rem;">
+          <img src="media/infografik.png" alt="Agent protocols infographic">
+          <figcaption><code>infografik.png</code> — NotebookLM infographic showing MCP/ACP/A2A/ANP solutions in inter-agent communication.</figcaption>
+        </figure>
+        <figure class="glass-panel" style="padding:1rem;">
+          <img src="media/MCP.png" alt="Model Context Protocol summaries">
+          <figcaption><code>MCP.png</code> — Visual explaining the motivation, success rate, and security concerns of the MCP standard.</figcaption>
+        </figure>
+        <figure class="glass-panel" style="padding:1rem;">
+          <img src="media/model.png" alt="MCP architecture and Python server setup steps">
+          <figcaption><code>model.png</code> — Poster explaining MCP architecture + server development process with Python block by block.</figcaption>
+        </figure>
+        <figure class="glass-panel" style="padding:1rem;">
+          <img src="media/post.jpeg" alt="Diagram showing MCP host, protocol layer and threat vectors">
+          <figcaption><code>post.jpeg</code> — Lists 17 threat categories (prompt injection, tool poisoning, etc.) alongside the Host and protocol layer.</figcaption>
+        </figure>
+        <figure class="glass-panel" style="padding:1rem;">
+          <img src="media/client-server-model.png" alt="Connection of LLM, MCP client and multiple MCP servers">
+          <figcaption><code>client-server-model.png</code> — Shows the client–server model where the LLM connects to multiple servers and tools via the MCP client.</figcaption>
+        </figure>
+        <figure class="glass-panel" style="padding:1rem;">
+          <img src="media/protocol.png" alt="Connection of MCP protocol with data sources and tools">
+          <figcaption><code>protocol.png</code> — Summarizes the bidirectional data flow between IDEs, chat interfaces, and data sources via MCP.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="glass-panel" id="demo">
+      <h3>Demo Video (YouTube)</h3>
+      <div
+        style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:20px;border:1px solid var(--border);">
+        <iframe src="https://www.youtube.com/embed/MgGM5rkxL0c" title="MCP for AI Agents"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <section class="glass-panel" id="references">
+      <h3>Reference Library (01–18)</h3>
+      <p>Abstracts for each paper are available in Readme; below is a quick reference list of titles and focus areas:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>Landscape, Security Threats, Future Research</td>
+            <td>16-activity MCP threat table</td>
+          </tr>
+          <tr>
+            <td>02</td>
+            <td>Advancing Multi-Agent Systems</td>
+            <td>Multi-agent coordination with MCP</td>
+          </tr>
+          <tr>
+            <td>03</td>
+            <td>Survey of Agent Interoperability</td>
+            <td>MCP vs ACP/A2A/ANP comparison</td>
+          </tr>
+          <tr>
+            <td>04</td>
+            <td>MCP at First Glance</td>
+            <td>1899 MCP server scan</td>
+          </tr>
+          <tr>
+            <td>05</td>
+            <td>MCPmed</td>
+            <td>Bioinformatics MCP services</td>
+          </tr>
+          <tr>
+            <td>06</td>
+            <td>Making REST APIs Agent-Ready</td>
+            <td>AutoMCP from OpenAPI</td>
+          </tr>
+          <tr>
+            <td>07</td>
+            <td>MCPToolBench++</td>
+            <td>4k+ tool benchmark</td>
+          </tr>
+          <tr>
+            <td>08</td>
+            <td>MCP-Guard</td>
+            <td>Layered defense framework</td>
+          </tr>
+          <tr>
+            <td>09</td>
+            <td>Help or Hurdle?</td>
+            <td>MCPGAUGE performance analysis</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>MCP-Universe</td>
+            <td>Real MCP server benchmark</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>LiveMCP-101</td>
+            <td>Plan-based stress test</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Adaptive Transport Systems</td>
+            <td>MCP in transport systems</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>AgentX</td>
+            <td>Agent orchestration in FaaS</td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td>Automatic Red Teaming</td>
+            <td>Poisoning with AutoMalTool</td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td>Asset Discovery</td>
+            <td>LLM-based infrastructure discovery</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>GenAI &amp; MCP</td>
+            <td>Applied ML integration</td>
+          </tr>
+          <tr>
+            <td>17</td>
+            <td>Survey of MCP</td>
+            <td>Standardization and context</td>
+          </tr>
+          <tr>
+            <td>18</td>
+            <td>AI Agents for Economic Research</td>
+            <td>Agent applications in economics</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="glass-panel">
+      <h3>Short / Medium Term Ideas</h3>
+      <div class="grid grid-2">
+        <div class="glass-panel" style="padding:1.25rem">
+          <h4>Short Term</h4>
+          <ul>
+            <li>Ensure synchronization of Protocol.png and media visuals with the paper.</li>
+            <li>Add a short index to the Reference folder README.</li>
+            <li>Add meta information (size, user) to media reports.</li>
+          </ul>
+        </div>
+        <div class="glass-panel" style="padding:1.25rem">
+          <h4>Medium Term</h4>
+          <ul>
+            <li>Automate LiveMCP-101/MCPToolBench++ tests with scripts.</li>
+            <li>Create and add OAuth/mTLS configuration examples to the document.</li>
+            <li>Reflect MCP-Guard and AutoMalTool scenarios as detailed case studies.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">This index page serves as a quick guide to the repository content; it should be reviewed
+      along with updates.</p>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Cases & Ecosystem - MCP Agentic Security Review</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1><a href="index.html" style="color: var(--text);">MCP Agentic Security Review</a></h1>
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="01-overview.html">Overview</a>
+                <a href="02-architecture.html">Architecture</a>
+                <a href="03-security-and-governance.html">Security</a>
+                <a href="04-performance-and-optimization.html">Performance</a>
+                <a href="05-use-cases-and-ecosystem.html">Use Cases</a>
+                <a href="06-insights-and-future.html">Insights</a>
+                <a href="07-literature-review.html">Literature</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="doc-nav">
+            <a href="04-performance-and-optimization.html">← Previous: Performance</a>
+            <a href="index.html">Back to Home</a>
+            <a href="06-insights-and-future.html">Next: Insights →</a>
+        </div>
+
+        <article class="content">
+            <h1>Use Cases & Ecosystem</h1>
+
+            <h2>Real-World Application Domains</h2>
+            <p>MCP is not just theoretical; it's powering transformation across major sectors.</p>
+
+            <h3>1. Software Development & DevOps</h3>
+            <ul>
+                <li><strong>"Vibe Coding":</strong> Developers describe functionality in natural language; the agent
+                    uses MCP to read the codebase, run tests, and edit files.</li>
+                <li><strong>Infrastructure as Code:</strong> Agents connect to <strong>AWS</strong> or
+                    <strong>Kubernetes</strong> MCP servers to manage cloud resources (e.g., "Scale the production
+                    cluster to 5 nodes").
+                </li>
+                <li><strong>LSP Bridge:</strong> The <code>lsp-mcp</code> server translates "Language Server Protocol"
+                    (used by IDEs for intellisense) into MCP, allowing agents to "understand" code just like an IDE
+                    does.</li>
+            </ul>
+
+            <h3>2. Enterprise Automation</h3>
+            <ul>
+                <li><strong>Financial Operations:</strong> Agents integrate with ERP systems to automate invoice
+                    processing, expense approvals, and audit trails.</li>
+                <li><strong>Supply Chain:</strong> Monitoring inventory levels via API and automatically triggering
+                    re-stocking workflows when thresholds are met.</li>
+                <li><strong>HR & Recruiting:</strong> analyzing resumes against job descriptions by connecting to ATS
+                    (Applicant Tracking Systems) via MCP.</li>
+            </ul>
+
+            <h3>3. Data Science & Research</h3>
+            <ul>
+                <li><strong>Autonomous Analysis:</strong> An agent connects to a <strong>Database</strong> (PostgreSQL)
+                    and a <strong>Search Engine</strong> (Brave Search). It gathers external market data,
+                    cross-references it with internal sales data, and generates a report.</li>
+                <li><strong>Economic Modeling:</strong> Agents pulling live economic indicators (inflation,
+                    unemployment) from government APIs to update forecast models in real-time.</li>
+            </ul>
+
+            <h3>4. Cybersecurity (Dual-Use)</h3>
+            <ul>
+                <li><strong>Blue Team (Defense):</strong> Agents act as a "SOC Analyst," aggregating logs from Splunk,
+                    querying threat intelligence feeds (VirusTotal), and automatically triaging alerts.</li>
+                <li><strong>Red Team (Offense):</strong> Automated penetration testing agents that use MCP to scan
+                    networks, identify vulnerabilities, and attempt exploitation (in controlled environments).</li>
+            </ul>
+
+            <h2>Multi-Agent Systems (MAS)</h2>
+            <p>MCP is the foundational "connective tissue" for multi-agent collaboration.</p>
+
+            <h3>The "AgentX" Pattern</h3>
+            <p>Instead of one super-agent trying to do everything, tasks are decomposed:</p>
+            <ol>
+                <li><strong>Planner Agent:</strong> Breaks the user request into steps.</li>
+                <li><strong>Research Agent:</strong> Uses search and browser tools to gather info.</li>
+                <li><strong>Coder Agent:</strong> Writes scripts to process data.</li>
+                <li><strong>Reviewer Agent:</strong> Validates the output.</li>
+            </ol>
+
+            <p><strong>Why MCP matters here:</strong></p>
+            <ul>
+                <li><strong>Standard Interface:</strong> All these specialized agents speak the same protocol.</li>
+                <li><strong>Composable:</strong> One agent can act as an MCP <em>server</em> for another agent.</li>
+                <li><strong>Context Sharing:</strong> Resources can be passed between agents to maintain a shared
+                    understanding of the state.</li>
+            </ul>
+
+            <figure style="margin: 2rem 0;">
+                <img src="images/agenticai_infographic.png" alt="Agentic AI Systems and MCP"
+                    style="width: 100%; border-radius: 16px; border: 1px solid var(--border);">
+                <figcaption style="margin-top: 0.75rem; color: var(--muted); text-align: center; font-size: 0.9rem;">
+                    Overview of agentic AI systems and how MCP enables multi-agent collaboration
+                </figcaption>
+            </figure>
+
+            <h2>Ecosystem Snapshot</h2>
+            <p>The ecosystem is growing rapidly with both official and community support.</p>
+            <ul>
+                <li><strong>Official SDKs:</strong> TypeScript, Python, Java, Kotlin, C#.</li>
+                <li><strong>Platforms:</strong>
+                    <ul>
+                        <li><strong>Anthropic:</strong> Creator of the standard, native integration in Claude.</li>
+                        <li><strong>Replit:</strong> Native MCP support for AI coding.</li>
+                        <li><strong>Cloudflare:</strong> Hosting infrastructure for secure, scalable MCP servers.</li>
+                        <li><strong>Microsoft & Google:</strong> Adopting the standard for their agentic platforms.</li>
+                    </ul>
+                </li>
+                <li><strong>Tools:</strong>
+                    <ul>
+                        <li><strong>AutoMCP:</strong> Generates servers from OpenAPI specs.</li>
+                        <li><strong>Smithery & Glama:</strong> Discoverability registries for finding public MCP
+                            servers.</li>
+                    </ul>
+                </li>
+            </ul>
+        </article>
+
+        <div class="doc-nav">
+            <a href="04-performance-and-optimization.html">← Previous: Performance</a>
+            <a href="index.html">Back to Home</a>
+            <a href="06-insights-and-future.html">Next: Insights →</a>
+        </div>
+    </main>
+</body>
+
+</html>

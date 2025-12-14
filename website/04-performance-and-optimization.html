@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance & Optimization - MCP Agentic Security Review</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1><a href="index.html" style="color: var(--text);">MCP Agentic Security Review</a></h1>
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="01-overview.html">Overview</a>
+                <a href="02-architecture.html">Architecture</a>
+                <a href="03-security-and-governance.html">Security</a>
+                <a href="04-performance-and-optimization.html">Performance</a>
+                <a href="05-use-cases-and-ecosystem.html">Use Cases</a>
+                <a href="06-insights-and-future.html">Insights</a>
+                <a href="07-literature-review.html">Literature</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="doc-nav">
+            <a href="03-security-and-governance.html">← Previous: Security</a>
+            <a href="index.html">Back to Home</a>
+            <a href="05-use-cases-and-ecosystem.html">Next: Use Cases →</a>
+        </div>
+
+        <article class="content">
+            <h1>Performance & Optimization</h1>
+
+            <h2>The Latency and Cost Challenge</h2>
+            <p>While MCP standardizes connection, it introduces a significant engineering challenge: <strong>Context
+                    Bloat</strong>.</p>
+
+            <h3>The Problem: "Context Pollution"</h3>
+            <p>When an agent connects to an MCP server, it typically loads:</p>
+            <ol>
+                <li><strong>Tool Definitions:</strong> JSON schemas describing every available tool.</li>
+                <li><strong>Intermediate Results:</strong> The full output of every tool call (e.g., the content of a
+                    read file, the JSON response of an API).</li>
+                <li><strong>Conversation History:</strong> The entire back-and-forth dialogue.</li>
+            </ol>
+
+            <p><strong>Impact:</strong></p>
+            <ul>
+                <li><strong>Token Costs:</strong> Can increase input tokens by massive factors (studies show up to
+                    <strong>236x increase</strong>).
+                </li>
+                <li><strong>Latency:</strong> Processing huge context windows slows down the model significantly.</li>
+                <li><strong>Accuracy Degradation:</strong> Too much irrelevant context confuses the model ("Lost in the
+                    Middle" phenomenon).</li>
+            </ul>
+
+            <h2>The Solution: "Code Execution" Paradigm</h2>
+            <p>To solve this, the industry is shifting from <strong>Direct Tool Calling</strong> to a <strong>Code
+                    Execution</strong> (or "Code Mode") model.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Direct Tool Calling</th>
+                        <th>Code Execution Paradigm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Mechanism</strong></td>
+                        <td>The LLM outputs a JSON object to call a specific tool.</td>
+                        <td>The LLM writes a script (e.g., Python/TypeScript) to call tool functions.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Context Usage</strong></td>
+                        <td><strong>High.</strong> All tool schemas and full results must be in context.</td>
+                        <td><strong>Low.</strong> Only necessary libraries are imported.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Handling</strong></td>
+                        <td>Raw data is passed through the LLM.</td>
+                        <td>Data is processed/filtered in the execution environment.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Efficiency</strong></td>
+                        <td><strong>150,000 tokens</strong> (Example Benchmark)</td>
+                        <td><strong>2,000 tokens</strong> (98.7% Reduction)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>How Code Execution Works</h3>
+            <p>Instead of the agent thinking:</p>
+            <blockquote style="border-left: 3px solid var(--accent-1); padding-left: 1rem; color: var(--muted);">
+                "I will call <code>read_file</code> for 'data.csv', then I will call <code>filter_data</code>, then I
+                will call <code>summarize</code>."
+            </blockquote>
+
+            <p>The agent thinks:</p>
+            <blockquote style="border-left: 3px solid var(--accent-2); padding-left: 1rem; color: var(--muted);">
+                "I will write a Python script to do this:"
+            </blockquote>
+
+            <pre><code># Agent-generated code
+import pandas as pd
+from mcp_tools import fs
+
+# Read and process in ONE go, without sending raw data to the LLM
+df = pd.read_csv(fs.get_path("data.csv"))
+summary = df[df['status'] == 'active'].describe()
+print(summary)</code></pre>
+
+            <p><strong>Benefits:</strong></p>
+            <ol>
+                <li><strong>Progressive Disclosure:</strong> The agent discovers tools as needed via code, rather than
+                    loading everything upfront.</li>
+                <li><strong>Privacy:</strong> Sensitive PII can be filtered out by the code <em>before</em> it's ever
+                    sent to the LLM.</li>
+                <li><strong>State Persistence:</strong> Intermediate results can be saved to disk.</li>
+            </ol>
+
+            <h2>Empirical Benchmarks</h2>
+
+            <h3>MCPGAUGE</h3>
+            <ul>
+                <li><strong>Findings:</strong> Adding more MCP tools does not always make an agent smarter. Without
+                    optimization, accuracy can drop because the model struggles to choose from too many options.</li>
+                <li><strong>Key Insight:</strong> Models need to be fine-tuned specifically for tool-use to handle the
+                    increased complexity.</li>
+            </ul>
+
+            <h3>LiveMCP-101</h3>
+            <ul>
+                <li><strong>Methodology:</strong> Tests agents against <em>live</em>, dynamic services (not just static
+                    mockups).</li>
+                <li><strong>Result:</strong> High-end models (like GPT-4o, Claude 3.5 Sonnet) perform significantly
+                    better at navigating complex, multi-step tool chains than smaller models.</li>
+            </ul>
+
+            <h2>Optimization Best Practices</h2>
+            <ol>
+                <li><strong>Limit Context:</strong> Don't dump 50 tools into the context. Use "router" agents to select
+                    the right toolset.</li>
+                <li><strong>Use Summarization:</strong> Have an intermediary step that summarizes tool outputs before
+                    adding them to the conversation history.</li>
+                <li><strong>Prefer Code Mode:</strong> For data-heavy tasks, always prefer agents that can write and
+                    execute code over those that just make API calls.</li>
+            </ol>
+        </article>
+
+        <div class="doc-nav">
+            <a href="03-security-and-governance.html">← Previous: Security</a>
+            <a href="index.html">Back to Home</a>
+            <a href="05-use-cases-and-ecosystem.html">Next: Use Cases →</a>
+        </div>
+    </main>
+</body>
+
+</html>

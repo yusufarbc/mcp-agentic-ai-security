@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Overview - MCP Agentic Security Review</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1><a href="index.html" style="color: var(--text);">MCP Agentic Security Review</a></h1>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="01-overview.html">Overview</a>
+        <a href="02-architecture.html">Architecture</a>
+        <a href="03-security-and-governance.html">Security</a>
+        <a href="04-performance-and-optimization.html">Performance</a>
+        <a href="05-use-cases-and-ecosystem.html">Use Cases</a>
+        <a href="06-insights-and-future.html">Insights</a>
+        <a href="07-literature-review.html">Literature</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="doc-nav">
+      <span style="color: var(--muted);">← Previous</span>
+      <a href="index.html">Back to Home</a>
+      <a href="02-architecture.html">Next: Architecture →</a>
+    </div>
+
+    <article class="content">
+      <h1>Model Context Protocol (MCP): Overview</h1>
+
+      <h2>Introduction: The "USB-C for AI"</h2>
+      <p>The Model Context Protocol (MCP) is an open standard that enables AI models to securely and efficiently
+        interact with external tools and data resources. It serves as a "universal translator" or connector, similar to
+        a USB-C port, allowing any AI application (the "host") to connect with any external tool or data source (the
+        "server") without needing custom integrations for each pair.</p>
+      <p>This standardization transforms AI agents from passive text generators into active, autonomous participants in
+        workflows, capable of reading files, querying databases, and executing complex tasks in the real world.</p>
+
+      <h2>The Challenge: The "N×M" Integration Problem</h2>
+      <p>Before MCP, the AI landscape was fragmented. Integrating AI agents with external tools presented a
+        combinatorial challenge:</p>
+      <ul>
+        <li><strong>N</strong> Agents (e.g., Claude, ChatGPT, IDE assistants)</li>
+        <li><strong>M</strong> Data Sources/Tools (e.g., Google Drive, Slack, PostgreSQL, GitHub)</li>
+      </ul>
+      <p>Without a standard, developers had to build <strong>N × M</strong> unique connectors. This resulted in:</p>
+      <ul>
+        <li><strong>High Maintenance:</strong> Every API change broke integrations.</li>
+        <li><strong>Silos:</strong> Tools built for one platform didn't work on another.</li>
+        <li><strong>Inefficiency:</strong> Redundant work stifled innovation.</li>
+      </ul>
+      <p><strong>MCP solves this by creating a shared language.</strong> Developers build an MCP server for their tool
+        <em>once</em>, and it instantly works with any MCP-compliant client (agent).
+      </p>
+
+      <h2>Core Primitives</h2>
+      <p>MCP defines three primary mechanisms ("primitives") for interaction:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Primitive</th>
+            <th>Controlled By</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tools</strong></td>
+            <td><strong>Model</strong></td>
+            <td>Executable functions that allow the AI to <em>act</em>. The model decides when to call a tool to perform
+              a specific task.</td>
+            <td><code>send_email</code>, <code>query_database</code>, <code>create_github_issue</code></td>
+          </tr>
+          <tr>
+            <td><strong>Resources</strong></td>
+            <td><strong>Application</strong></td>
+            <td>Read-only data sources that provide <em>context</em>. The application exposes these for the model to
+              read.</td>
+            <td>Database schemas, file contents, API response logs</td>
+          </tr>
+          <tr>
+            <td><strong>Prompts</strong></td>
+            <td><strong>User</strong></td>
+            <td>Pre-defined templates and workflows that standardize common interactions for users.</td>
+            <td>"Analyze this codebase", "Summarize recent logs"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>MCP vs. Traditional APIs</h2>
+      <p>While traditional REST APIs are essential for web services, they are not optimized for autonomous agents. MCP
+        introduces key differences:</p>
+      <ol>
+        <li><strong>Stateful Sessions:</strong> Unlike stateless REST APIs, MCP maintains a connection session. This
+          allows the server to manage context, reducing the need for the agent to re-send mostly static information with
+          every request.</li>
+        <li><strong>Dynamic Discovery:</strong> Agents can query an MCP server to "discover" what tools and resources
+          are available at runtime. This enables "progressive disclosure," where an agent learns about a system's
+          capabilities as needed.</li>
+        <li><strong>Bidirectional Communication:</strong> MCP allows servers to send notifications to clients (e.g.,
+          "Resource Updated"), enabling real-time, event-driven workflows that are difficult to achieve with standard
+          request-response models.</li>
+      </ol>
+
+      <h2>Strategic Value</h2>
+      <p>Adopting MCP moves the industry from a fragmented ecosystem of bespoke connectors to a scalable, interoperable
+        infrastructure. It allows:</p>
+      <ul>
+        <li><strong>Tool Builders</strong> to write one integration that works everywhere.</li>
+        <li><strong>Agent Developers</strong> to access a vast library of pre-built tools.</li>
+        <li><strong>Enterprises</strong> to securely govern AI access to internal data.</li>
+      </ul>
+
+      <figure style="margin: 2rem 0;">
+        <img src="images/mcp_infographic.png" alt="MCP Ecosystem Infographic"
+          style="width: 100%; border-radius: 16px; border: 1px solid var(--border);">
+        <figcaption style="margin-top: 0.75rem; color: var(--muted); text-align: center; font-size: 0.9rem;">
+          Comprehensive overview of the MCP ecosystem and its role in standardizing AI agent interactions
+        </figcaption>
+      </figure>
+    </article>
+
+    <div class="doc-nav">
+      <span style="color: var(--muted);">← Previous</span>
+      <a href="index.html">Back to Home</a>
+      <a href="02-architecture.html">Next: Architecture →</a>
+    </div>
+  </main>
+</body>
+
+</html>

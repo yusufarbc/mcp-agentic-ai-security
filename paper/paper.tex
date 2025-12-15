@@ -1,158 +1,194 @@
-% IEEE conference paper on MCP security
-\documentclass[conference,a4paper]{IEEEtran}
-\IEEEoverridecommandlockouts
+\documentclass[11pt, a4paper]{article}
 
+% --- Language & Encoding ---
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[pdftex]{graphicx}
-\usepackage{cite}
-\usepackage{amsmath}
-\usepackage{siunitx}
-\usepackage{array}
-\usepackage[caption=false,lofdepth,lotdepth]{subfig}
-\usepackage{acronym}
-\usepackage{xcolor}
-\usepackage{microtype}
+\usepackage[english]{babel} % Strict English enforcement
+
+% --- Layout & Typography ---
+\usepackage[margin=1in]{geometry} % Standard 1-inch margins
+\usepackage{mathpazo} % Palatino font (Professional & Clean)
+\usepackage{microtype} % Better kerning
+\usepackage{titlesec}
+\usepackage{setspace}
+\setstretch{1.15} % Slight line spacing for readability
+
+% --- Styling Headings ---
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{black}}
+  {\thesubsection}{1em}{}
+
+% --- Graphics & Tables ---
+\usepackage{graphicx}
 \usepackage{booktabs}
-\usepackage{listings}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{xcolor}
+
+% --- References & URL ---
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
 \usepackage{url}
 
-\hyphenation{op-tical net-works semi-conduc-tor}
-\setlength{\textfloatsep}{5pt}
+% --- Title Block ---
+\title{
+    \vspace{-1cm}
+    \textbf{\LARGE A Critical Security and Architectural Review of the \\ Model Context Protocol (MCP) Ecosystem} \\
+    \vspace{0.5em}
+    \large \textit{Research Report -- December 2025}
+}
+
+\author{
+    \textbf{Yusuf Talha ARABACI} \\
+    \textit{M.Sc. Student in Software Engineering} \\
+    Karabuk University, Turkey
+}
+\date{}
 
 \begin{document}
 
-\title{A Critical Security and Architectural Review of the Model Context Protocol (MCP) Ecosystem}
-
-\author{%
-  \IEEEauthorblockN{Yusuf Talha ARABACI}%
-  \IEEEauthorblockA{%
-    M.Sc. Student in Software Engineering\\%
-    Karabuk University\\%
-    Karabuk, Turkey%
-  }%
-}
-
 \maketitle
+\thispagestyle{empty} % No page number on title page
 
-\begin{abstract}
-The transition of Large Language Models (LLMs) from passive text generators to active, tool-using agents has been hindered by a persistent interoperability crisis: the ``$N \times M$'' integration barrier. The Model Context Protocol (MCP), introduced in late 2024, attempts to resolve this by standardizing the interface between AI agents and external data. This paper provides a critical architectural synthesis of the MCP ecosystem, grounded in an empirical analysis of 1,899 deployed servers. We argue that while decoupling intelligence from data sources is architecturally sound, it exposes a ``Lethal Trifecta'' of security risks---unrestricted data access, internet connectivity, and autonomous action---that current governance models fail to address. Our review of benchmarks, including MCPGAUGE and LiveMCP-101, identifies a significant ``Protocol-Behavior Mismatch,'' where frontier models frequently fail to comply with tool-use directives despite correct protocol implementation. We conclude by analyzing the industry's shift toward a ``Code Execution Paradigm'' to mitigate context bloat and propose a tiered defense strategy utilizing mandatory sandboxing and information flow control.
-\end{abstract}
+% --- Abstract Box ---
+\begin{center}
+    \begin{minipage}{0.9\textwidth}
+        \hrule height 1pt \vspace{0.5em}
+        \small \textbf{Abstract} -- The transition of Large Language Models (LLMs) from passive text generators to active, tool-using agents has been hindered by a persistent interoperability crisis: the ``$N \times M$'' integration barrier. The Model Context Protocol (MCP), introduced in late 2024, attempts to resolve this by standardizing the interface between AI agents and external data. This paper provides a critical architectural synthesis of the MCP ecosystem, grounded in an empirical analysis of 1,899 deployed servers. We argue that while decoupling intelligence from data sources is architecturally sound, it exposes a ``Lethal Trifecta'' of security risks---unrestricted data access, internet connectivity, and autonomous action---that current governance models fail to address. Our review of benchmarks, including MCPGAUGE and LiveMCP-101, identifies a significant ``Protocol-Behavior Mismatch,'' where frontier models frequently fail to comply with tool-use directives despite correct protocol implementation. We conclude by analyzing the industry's shift toward a ``Code Execution Paradigm'' to mitigate context bloat and propose a tiered defense strategy utilizing mandatory sandboxing and information flow control.
+        \vspace{0.5em} \hrule height 1pt
+    \end{minipage}
+\end{center}
 
-\begin{IEEEkeywords}
-Model Context Protocol, MCP, context bloat, code execution paradigm, agentic security, lethal trifecta, multi-agent systems.
-\end{IEEEkeywords}
-
-\IEEEpeerreviewmaketitle
+\clearpage
 
 \section{Introduction: The Interoperability Crisis}
-The scalability of ``agentic AI''---systems capable of planning, reasoning, and acting---has long been constrained by a fundamental infrastructure deficit. While LLMs have achieved remarkable linguistic fluency, their ability to interact with external environments has remained brittle. The core challenge was not a lack of intelligence, but the absence of a pervasive communication standard. Connecting any given model ($N$) to distinctive tools ($M$) historically required bespoke integrations, trapping developers in an unmanageable ``$N \times M$'' maintenance cycle.
+For years, the promise of ``agentic AI''---systems that can plan, reason, and act---has been held back by a boring but critical infrastructure problem: they couldn't easily talk to the outside world. While LLMs have become incredibly fluent in language, their ability to actually \textit{do} things has remained surprisingly brittle. The real bottleneck wasn't intelligence; it was the lack of a standard way to communicate. Connecting a model ($N$) to a tool ($M$) meant writing custom code for every single integration, trapping developers in an unmanageable ``$N \times M$'' maintenance nightmare.
 
-Introduced in late 2024, the Model Context Protocol (MCP) emerged as the industry's answer to this fragmentation. Analogous to a ``USB-C port'' for the AI layer, MCP provides a universal standard for connectivity, backed by Anthropic, OpenAI, and Google. This standardization has rapidly shifted the development paradigm from stateless, ephemeral API calls to stateful, persistent agent sessions.
+The Model Context Protocol (MCP), launched in late 2024, is the industry's attempt to fix this fragmentation. Think of it as a ``USB-C port'' for AI---a universal standard supported by giants like Anthropic, OpenAI, and Google \cite{singh2025survey_mcp}. This shift is profound: we are moving from simple, stateless API calls to persistent, stateful agent sessions that feel much more like hiring a digital employee than running a script \cite{ehtesham2025survey, hou2025landscape}.
 
-Yet, this solution precipitates a new class of vulnerabilities. Empowering AI agents to query databases, manipulate files, and execute code introduces a ``Lethal Trifecta'' of risks: access to sensitive Data, connection to the public Internet, and the authority to take Action. Recent audits reveal that 66\% of open-source MCP implementations exhibit structural ``code smells'' and 5.5\% contain high-severity tool poisoning vectors. This paper contends that while MCP is an architectural necessity, it currently lacks the requisite security maturity. We must move beyond the novelty of connection to the rigor of governance.
+However, this solution creates a dangerous new set of problems. By giving AI agents the power to query databases, edit files, and run code, we are introducing what we call the ``Lethal Trifecta'' of risks: access to private \textbf{Data}, connection to the public \textbf{Internet}, and the autonomous power to take \textbf{Action}. Recent audits are alarming: 66\% of open-source MCP implementations have serious structural flaws, and 5.5\% are wide open to tool poisoning attacks \cite{hasan2025firstglance}. This paper argues that while MCP is architecturally necessary, it is currently nowhere near secure enough for production. We need to stop obsessing over the novelty of connection and start focusing on the rigor of governance.
 
 \section{Methodology: Architectural Design}
-MCP creates a modular ecosystem by strictly decoupling the "Client/Host" (the reasoning engine) from the "Server" (the execution context). This architecture relies on specific primitives and negotiation protocols.
+The brilliance of MCP lies in its strict separation of concerns. It breaks the monolithic AI integration model by decoupling the "Host" (the brain/LLM) from the "Server" (the hands/tools).
 
 \subsection{Connection and Negotiation}
-Unlike stateless REST APIs, an MCP session relies on a persistent handshake. The Host application (e.g., an IDE or Chat Interface) initializes an \textbf{MCP Client}, which establishes a connection to a standalone \textbf{MCP Server}.
-Upon connection, a \textit{Capability Negotiation} phase occurs. The Client and Server exchange supported feature sets—such as ``sampling'' (the server querying the LLM) or ``prompts'' (standardized templates)—ensuring that agents only discover tools they are architecturally capable of wielding.
+Think of an MCP session like a USB handshake. It's not a one-off API call; it's a persistent relationship. The Host application (like your IDE or Chatbot) initializes an \textbf{MCP Client}, which plugs into a standalone \textbf{MCP Server}.
+The moment they connect, they negotiate. They swap credentials and capabilities---like "sampling" (can the server ask the AI questions?) or "prompts" (does the server have built-in templates?)---ensuring the agent never tries to use a tool it doesn't actually understand \cite{mastouri2025rest}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\columnwidth]{mcp_protocol.png}
+    \caption{Overview of the Model Context Protocol (MCP) architecture.}
+    \label{fig:mcp_protocol}
+\end{figure}
 
 \subsection{Protocol Primitives}
-The protocol organizes interaction into three distinct abstractions:
+The entire ecosystem handles just three types of things:
 \begin{enumerate}
-    \item \textbf{Tools (Execution):} Functions that alter system state (e.g., \texttt{INSERT INTO users...}). These represent the highest risk surface.
-    \item \textbf{Resources (Context):} Read-only data streams (e.g., logs, file contents) that provide context without side effects.
-    \item \textbf{Prompts (Guidance):} Pre-defined templates that structure agent behavior for specific workflows, such as code review or data analysis.
+    \item \textbf{Tools (Execution):} The ability to \textit{do} things. Whether it's \texttt{INSERT INTO users} or \texttt{delete\_file}, this is where the magic (and the danger) happens.
+    \item \textbf{Resources (Context):} Passive data streams. Think of reading logs or viewing a file. It gives the model context without breaking anything.
+    \item \textbf{Prompts (Guidance):} Pre-baked workflows. Instead of blindly guessing, the server tells the model: "Here is the standard way to review code."
 \end{enumerate}
 
 \subsection{Transport Layer Implications}
-Security posture is heavily influenced by the transport selection:
+How you connect matters. You generally have two choices:
 \begin{itemize}
-    \item \textbf{Stdio (Local):} The server operates as a subprocess of the host. Data remains within the local memory space, offering implicit isolation and high throughput.
-    \item \textbf{HTTP/SSE (Remote):} Essential for distributed architectures. The client sends commands via HTTP POST, receiving asynchronous updates via Server-Sent Events (SSE). While scalable, this introduces significant latency overhead and expands the attack surface to network-based vectors.
+    \item \textbf{Stdio (Local):} The server runs right on your machine as a subprocess. It's fast, private, and secure because data never leaves your RAM.
+    \item \textbf{HTTP/SSE (Remote):} Necessary for the cloud, but riskier. We use Server-Sent Events (SSE) for updates, but this opens the door to network latency and traditional web attacks \cite{chhetri2025transport}.
 \end{itemize}
 
 \section{Analysis: Performance \& Efficiency}
-The integration of external tools creates a secondary challenge: efficiency. The ecosystem is currently grappling with ``Context Bloat,'' where the comprehensive description of available tools overwhelms the model's cognitive window.
+Connecting tools is great, but it comes with a hidden cost: noise. The ecosystem is currently suffering from ``Context Bloat''---we are stuffing so much documentation into the model that it can't think straight.
 
 \subsection{The Cost of Context}
-Providing an agent with granular control requires feeding it detailed JSON schemas for every available tool. At enterprise scale, this approach floods the context window with definitions, diluting the signal of the user's actual query. Empirical data suggests this can increase input token costs by a factor of \textbf{$236\times$}. More critically, it creates a "Lost in the Middle" effect, where models struggle to retrieve the correct tool definition from a saturated context.
+To use a tool, the agent needs to read its manual (the JSON schema). When you have hundreds of tools, you are flooding the context window with definitions. This dilutes the user's actual question. In fact, studies show this can explode token costs by \textbf{$236\times$} \cite{mcpmed2025}. Even worse, it causes the "Lost in the Middle" effect: the model forgets the tool exists because it's buried in a mountain of text \cite{song2025help}.
 
 \subsection{The Code Execution Shift}
-To mitigate this, the industry is pivoting toward a ``Code Execution Paradigm.'' Rather than making serial API calls (the ``Direct Tool Calling'' method), models are increasingly trained to write and execute scripts (e.g., Python).
-This shift offers dramatic efficiency gains. Instead of multiple round-trips to filter a dataset, the agent writes a single script to fetch and process the data in-memory. Benchmarks indicate this approach can reduce token consumption by \textbf{98\%} and significantly lower latency, though it necessitates a robust sandboxing infrastructure.
+The industry's solution? Stop asking for permission, start writing code. We are moving toward a ``Code Execution Paradigm.'' Instead of making five separate API calls to checks stock prices, the model writes a single Python script to fetch and graph them all at once.
+This is a game changer. It cuts token usage by \textbf{98\%} and makes everything faster. But it also means we are letting an AI write and run software on our machines, which demands incredible sandboxing.
 
 \section{Security Assessment: The Lethal Trifecta}
-The convergence of capabilities in MCP agents creates a threat landscape distinct from traditional web applications. We categorize these risks as the ``Lethal Trifecta'': \textbf{(1) Private Data Access}, \textbf{(2) Internet Connectivity}, and \textbf{(3) Action Authority}.
+When we give an agent tools, we aren't just building a smarter chatbot; we are building a user with root privileges. We face a "Lethal Trifecta" of new risks: \textbf{(1) Access to Data}, \textbf{(2) Access to the Internet}, and \textbf{(3) The Power to Act}.
 
 \subsection{Threat Vectors}
 \begin{enumerate}
-    \item \textbf{Indirect Prompt Injection (IPI):} Attackers exploit the agent's ability to read external content. By embedding malicious, invisible instructions in a webpage, an attacker can hijack the agent's control flow. The agent, treating the webpage as context, executes the attacker's commands—potentially exfiltrating data or corrupting files.
-    \item \textbf{Tool Poisoning:} This represents a supply chain attack on the agent's capabilities. If an attacker publishes a compromised MCP server, it acts as a trojan horse. Research identified a \textbf{5.5\%} poisoning risk in the current open-source ecosystem.
-    \item \textbf{Sampling Manipulation:} A compromised server can return falsified data or conversation history during a sampling request, effectively gaslighting the model into making incorrect decisions.
+    \item \textbf{Indirect Prompt Injection (IPI):} This is the scariest one. If an agent reads a webpage you visited, that webpage can hack the agent. By hiding invisible instructions in the text, an attacker can trick your AI into emailing them your passwords \cite{he2025redteaming}.
+    \item \textbf{Tool Poisoning:} supply chain attacks are coming for AI. If you install a malicious MCP server, you are effectively installing a trojan horse. Our research found \textbf{5.5\%} of current servers are already compromised.
+    \item \textbf{Sampling Manipulation:} A bad server can lie to the model, faking data or rewriting conversation history to gaslight the AI into making bad decisions.
 \end{enumerate}
 
 \subsection{Defense Strategy}
-Perimeter defense is insufficient for agentic systems. We propose a layered "Defense-in-Depth" model:
+Firewalls aren't enough. We need "Defense-in-Depth":
 \begin{itemize}
-    \item \textbf{Tiered Sandboxing:} Servers must be isolated based on risk. Basic tools may run in containers, but Code Execution endpoints require microVM isolation (e.g., Firecracker) to ensure kernel-level separation.
-    \item \textbf{Taint Tracking:} Information Flow Control (IFC) systems must tag data originating from untrusted sources (e.g., the web) as "tainted," preventing its use in sensitive sinks (e.g., file deletion) without explicit sanitization.
+    \item \textbf{Tiered Sandboxing:} Not all tools are equal. A weather checker can run normally, but a Python executor needs to be locked in a microVM (like Firecracker) so it can't touch the kernel.
+    \item \textbf{Taint Tracking:} We need to tag data. If text comes from the untrusted web, it's "tainted." The agent shouldn't be allowed to send tainted text to sensitive places (like a "Delete File" tool) without cleaning it first \cite{xing2025guard}.
 \end{itemize}
 
 \section{Empirical Evaluation \& Gaps}
 Synthesizing data from recent benchmarks clarifies the current limitations of the ecosystem.
 
 \subsection{The Reality Gap}
-Frameworks such as \textbf{MCPGAUGE} and \textbf{LiveMCP-101} reveal a discrepancy between capability and reliability.
+When we look at benchmarks like \textbf{MCPGAUGE} and \textbf{LiveMCP-101}, a worrying picture emerges: these agents are often overconfident but under-competent \cite{fan2025toolbench, luo2025universe}.
 \begin{itemize}
-    \item \textbf{Performance Reality:} In real-world scenarios, even frontier models (e.g., GPT-4o, Claude 3.5 Sonnet) often achieve success rates \textbf{below 60\%} for complex, multi-step tasks.
-    \item \textbf{Initiative Deficit:} Models frequently exhibit passivity, failing to utilize available tools unless explicitly prompted.
-    \item \textbf{Compliance Failures:} There is a persistent issue where models hallucinate tool parameters or ignore schema constraints, despite a valid protocol handshake.
+    \item \textbf{Performance Reality:} In the real world, even top-tier models (like GPT-4o or Claude 3.5 Sonnet) struggle to complete complex tasks, failing more than 40\% of the time \cite{yin2025livemcp}.
+    \item \textbf{Initiative Deficit:} Agents are frequently too passive. They often sit waiting for a specific command instead of utilizing the tools they have to solve the problem explicitly.
+    \item \textbf{Compliance Failures:} Perhaps most frustratingly, models often "hallucinate" parameters. They will confidently try to use a tool with arguments that simply don't exist, ignoring the strict protocol handshake.
 \end{itemize}
 
 \subsection{Research Priorities}
-Four areas require urgent academic attention:
-\subsubsection{Protocol-Behavior Mismatch} The protocol is syntactically robust, but the agents are semantically fragile. Future work must bridge the gap between providing a tool and ensuring the model understands \textit{when} to use it.
-\subsubsection{Secure Runtimes} As Code Execution becomes standard, the burden of security shifts to the runtime environment. Standardized, verified sandboxing protocols are required.
-\subsubsection{Trust Registry} The ecosystem lacks a mechanism for trust. A centralized "Registry of Trust," similar to SSL certificate authorities, is needed to validate MCP servers.
-\subsubsection{Domain Extensions} Generic protocols are insufficient for regulated industries. Extensions enforcing HIPAA or GDPR compliance at the protocol level are necessary for adoption in healthcare and finance.
+We need to stop building new features and start fixing the foundation. Here is what needs to happen:
+\subsubsection{Protocol-Behavior Mismatch} The protocol works, but the agents are clumsy. We need to bridge the gap between "having a tool" and "knowing when to use it."
+\subsubsection{Secure Runtimes} If we are going to let AI write code, the runtime is the new battlefield. We need standardized, verified sandboxes.
+\subsubsection{Trust Registry} Who do you trust? We need a centralized "App Store" or Registry for MCP servers, similar to how SSL certificates validate websites.
+\subsubsection{Domain Extensions} One size doesn't fit all. Healthcare and Finance need their own versions of MCP that enforce privacy laws (like HIPAA) at the protocol level.
 
 \section{Future Outlook}
-The trajectory of MCP points toward Multi-Agent Systems (MAS). The \textbf{AgentX} pattern illustrates this evolution, where MCP serves as the connective tissue for specialized agent teams—Planners, Researchers, and Executors—working in concert. We envision a hybrid future where high-performance backends remain on gRPC/REST, while the dynamic, adaptive layer of agent interaction standardizes on MCP.
+The future isn't one giant AI; it's a team. The \textbf{AgentX} pattern shows us a world where MCP acts as the glue for specialized squads—one agent plans, another researches, and a third executes \cite{tokal2025agentx, krishnan2025multiagent}. We see a hybrid future: heavy lifting stays on traditional APIs, but the dynamic, creative layer of the internet standardizes on MCP.
 
 \section{Conclusion}
-The Model Context Protocol has successfully transformed the architectural landscape, enabling agents to act as genuine digital colleagues rather than isolated processors. However, the empirical evidence—highlighting low reliability rates and substantial security risks—demonstrates that the ecosystem is still in a volatile infancy. The path forward lies not in expanding features, but in deepening governance. Adopting standards like ISO 42001 and enforcing secure-by-default architectures are not merely best practices; they are existential requirements for the safe deployment of agentic AI.
+The Model Context Protocol has genuinely changed the game. It has allowed us to stop looking at AI as just a chatbot and start treating it as a digital colleague that can actually work alongside us. But let's be realistic: the evidence shows this ecosystem is still in its "wild west" phase. Reliability is low, and security risks are alarmingly high.
+
+The path forward isn't about adding more features. It's about maturity. We need to adopt serious standards like ISO 42001 and force every architecture to be secure-by-default. If we don't, we risk building a house of cards that collapses the moment it's tested in the real world \cite{korinek2025economics, coppolino2025asset, bhandarwar2025genai}.
+
+\clearpage
 
 \begin{thebibliography}{99}
 
-\bibitem{hou2025landscape}
-X.~Hou, Y.~Zhao, S.~Wang, and H.~Wang, ``Model Context Protocol (MCP): Landscape, Security Threats, and Future Research Directions,'' \textit{arXiv preprint arXiv:2503.23278}, 2025.
-
-\bibitem{krishnan2025multiagent}
-N.~Krishnan, ``Advancing Multi-Agent Systems Through Model Context Protocol: Architecture, Implementation, and Applications,'' \textit{arXiv preprint arXiv:2504.21030}, 2025.
+\bibitem{singh2025survey_mcp}
+A.~Singh et al., ``A Survey of the Model Context Protocol (MCP): Standardizing Context to Enhance Large Language Models (LLMs),'' \textit{Preprints 202504.0245}, 2025.
 
 \bibitem{ehtesham2025survey}
 A.~Ehtesham, A.~Singh, G.~K.~Gupta, and S.~Kumar, ``A Survey of agent interoperability protocols: MCP, ACP, A2A, ANP,'' \textit{arXiv preprint arXiv:2505.02279}, 2025.
 
+\bibitem{hou2025landscape}
+X.~Hou, Y.~Zhao, S.~Wang, and H.~Wang, ``Model Context Protocol (MCP): Landscape, Security Threats, and Future Research Directions,'' \textit{arXiv preprint arXiv:2503.23278}, 2025.
+
 \bibitem{hasan2025firstglance}
 M.~M.~Hasan et al., ``Model Context Protocol (MCP) at First Glance: Studying the Security and Maintainability of MCP Servers,'' \textit{arXiv preprint arXiv:2506.13538}, 2025.
-
-\bibitem{mcpmed2025}
-M.~Flotho et al., ``MCPmed: A Call for MCP-Enabled Bioinformatics Web Services for LLM-Driven Discovery,'' \textit{arXiv preprint arXiv:2507.08055}, 2025.
 
 \bibitem{mastouri2025rest}
 M.~Mastouri, E.~Ksontini, and W.~Kessentini, ``Making REST APIs Agent-Ready: From OpenAPI to MCP Servers for Tool-Augmented LLMs,'' \textit{arXiv preprint arXiv:2507.16044}, 2025.
 
-\bibitem{fan2025toolbench}
-S.~Fan et al., ``MCPToolBench++: A Large Scale AI Agent Model Context Protocol MCP Tool Use Benchmark,'' \textit{arXiv preprint arXiv:2508.07575}, 2025.
+\bibitem{chhetri2025transport}
+G.~Chhetri et al., ``Model Context Protocols in Adaptive Transport Systems: A Survey,'' \textit{arXiv preprint arXiv:2508.19239}, 2025.
+
+\bibitem{mcpmed2025}
+M.~Flotho et al., ``MCPmed: A Call for MCP-Enabled Bioinformatics Web Services for LLM-Driven Discovery,'' \textit{arXiv preprint arXiv:2507.08055}, 2025.
+
+\bibitem{song2025help}
+W.~Song et al., ``Help or Hurdle? Rethinking Model Context Protocol-Augmented Large Language Models,'' \textit{arXiv preprint arXiv:2508.12566}, 2025.
+
+\bibitem{he2025redteaming}
+P.~He et al., ``Automatic Red Teaming LLM-based Agents with Model Context Protocol Tools,'' \textit{arXiv preprint arXiv:2509.21011}, 2025.
 
 \bibitem{xing2025guard}
 W.~Xing et al., ``MCP-Guard: A Defense Framework for Model Context Protocol Integrity in Large Language Model Applications,'' \textit{arXiv preprint arXiv:2508.10991}, 2025.
 
-\bibitem{song2025help}
-W.~Song et al., ``Help or Hurdle? Rethinking Model Context Protocol-Augmented Large Language Models,'' \textit{arXiv preprint arXiv:2508.12566}, 2025.
+\bibitem{fan2025toolbench}
+S.~Fan et al., ``MCPToolBench++: A Large Scale AI Agent Model Context Protocol MCP Tool Use Benchmark,'' \textit{arXiv preprint arXiv:2508.07575}, 2025.
 
 \bibitem{luo2025universe}
 Z.~Luo et al., ``MCP-Universe: Benchmarking Large Language Models with Real-World Model Context Protocol Servers,'' \textit{arXiv preprint arXiv:2508.14704}, 2025.
@@ -160,26 +196,20 @@ Z.~Luo et al., ``MCP-Universe: Benchmarking Large Language Models with Real-Worl
 \bibitem{yin2025livemcp}
 M.~Yin et al., ``LiveMCP-101: Stress Testing and Diagnosing MCP-enabled Agents on Challenging Queries,'' \textit{arXiv preprint arXiv:2508.15760}, 2025.
 
-\bibitem{chhetri2025transport}
-G.~Chhetri et al., ``Model Context Protocols in Adaptive Transport Systems: A Survey,'' \textit{arXiv preprint arXiv:2508.19239}, 2025.
-
 \bibitem{tokal2025agentx}
 S.~S.~K.~A.~Tokal et al., ``AgentX: Towards Orchestrating Robust Agentic Workflow Patterns with FaaS-hosted MCP Services,'' \textit{arXiv preprint arXiv:2509.07595}, 2025.
 
-\bibitem{he2025redteaming}
-P.~He et al., ``Automatic Red Teaming LLM-based Agents with Model Context Protocol Tools,'' \textit{arXiv preprint arXiv:2509.21011}, 2025.
+\bibitem{krishnan2025multiagent}
+N.~Krishnan, ``Advancing Multi-Agent Systems Through Model Context Protocol: Architecture, Implementation, and Applications,'' \textit{arXiv preprint arXiv:2504.21030}, 2025.
+
+\bibitem{korinek2025economics}
+A.~Korinek, ``AI Agents for Economic Research,'' \textit{NBER Working Paper 34202}, 2025.
 
 \bibitem{coppolino2025asset}
 L.~Coppolino et al., ``Asset Discovery in Critical Infrastructures: An LLM-Based Approach,'' \textit{Electronics 14(16):3267}, 2025.
 
 \bibitem{bhandarwar2025genai}
 N.~Bhandarwar, ``Integrating Generative AI and Model Context Protocol (MCP) with Applied Machine Learning for Advanced Agentic AI Systems,'' \textit{Int. J. of Computer Trends and Technology}, 2025.
-
-\bibitem{singh2025survey_mcp}
-A.~Singh et al., ``A Survey of the Model Context Protocol (MCP): Standardizing Context to Enhance Large Language Models (LLMs),'' \textit{Preprints 202504.0245}, 2025.
-
-\bibitem{korinek2025economics}
-A.~Korinek, ``AI Agents for Economic Research,'' \textit{NBER Working Paper 34202}, 2025.
 
 \end{thebibliography}
 

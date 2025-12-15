@@ -5,93 +5,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insights & Future - MCP Agentic Security Review</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap CSS (Local) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <h1><a href="index.html" class="no-underline" style="color: var(--text);">MCP Agentic Security Review</a></h1>
-            <div class="links">
-                <a href="index.html" class="no-underline">Home</a>
-                <a href="overview.html" class="no-underline">Overview</a>
-                <a href="architecture.html" class="no-underline">Architecture</a>
-                <a href="security-and-governance.html" class="no-underline">Security</a>
-                <a href="performance-and-optimization.html" class="no-underline">Performance</a>
-                <a href="use-cases-and-ecosystem.html" class="no-underline">Use Cases</a>
-                <a href="insights-and-future.html" class="no-underline">Insights</a>
-                <a href="literature-review.html" class="no-underline">Literature</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand gradient-text" href="index.html">MCP Agentic Security Review</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="overview.html">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="architecture.html">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="security-and-governance.html">Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="performance-and-optimization.html">Performance</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="use-cases-and-ecosystem.html">Use Cases</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="insights-and-future.html">Insights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="literature-review.html">Literature</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
-
-    <main>
-        <div class="doc-nav">
-            <a href="use-cases-and-ecosystem.html">← Previous: Use Cases</a>
-            <a href="index.html">Back to Home</a>
-            <a href="literature-review.html">Next: Literature →</a>
         </div>
+    </nav>
 
-        <article class="content">
-            <h1>Insights & Future Outlook</h1>
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 order-lg-2 mb-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h6 class="card-title text-uppercase text-muted small fw-bold">Research Paper</h6>
+                            <p class="card-text small">Download the full IEEE format paper for in-depth analysis.</p>
+                            <a href="https://github.com/yusufarbc/mcp-agentic-ai-security/blob/main/paper/paper.pdf"
+                                target="_blank" class="btn btn-sm btn-gradient w-100 mb-2">📥 Download PDF</a>
 
-            <h2>5 Surprising Truths About MCP</h2>
-            <p>Research and early adoption have revealed counter-intuitive lessons:</p>
+                        </div>
+                    </div>
 
-            <ol>
-                <li><strong>More Tools ≠ Smarter Agents:</strong> Adding too many tools can confuse models and degrade
-                    performance. Curation is key.</li>
-                <li><strong>Don't Call, Code:</strong> Writing code to use tools is vastly more efficient (98% token
-                    reduction) than calling tools directly.</li>
-                <li><strong>Automation is Essential:</strong> Manual server building is a bottleneck. Automated tools
-                    like AutoMCP are required to scale the ecosystem.</li>
-                <li><strong>Security is the "Lethal Trifecta":</strong> Granting agents access to Data + Internet +
-                    Action creates massive risk (Indirect Prompt Injection).</li>
-                <li><strong>The "Social Contract":</strong> MCP is more than a tech spec; it's the protocol for
-                    multi-agent coordination.</li>
-            </ol>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h6 class="card-title text-uppercase text-muted small fw-bold">Jump To</h6>
+                            <nav class="nav flex-column small">
+                                <a class="nav-link text-muted py-1" href="#truths">5 Surprising Truths</a>
+                                <a class="nav-link text-muted py-1" href="#trajectory">Future Trajectory</a>
+                                <a class="nav-link text-muted py-1" href="#conclusion">Conclusion</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <h2>Future Trajectory</h2>
+            <!-- Content Column -->
+            <div class="col-lg-9 order-lg-1">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Insights & Future</li>
+                    </ol>
+                </nav>
 
-            <h3>Hybrid Architectures</h3>
-            <p>The future isn't "All MCP" or "All REST." It's a hybrid:</p>
-            <ul>
-                <li><strong>REST/gRPC:</strong> Remains the standard for high-performance, rigid, backend-to-backend
-                    communication.</li>
-                <li><strong>MCP:</strong> Becomes the standard layer for <strong>Agent-to-System</strong> interaction,
-                    where flexibility and discovery are paramount.</li>
-            </ul>
+                <article class="card shadow-sm border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <h1 class="display-5 fw-bold mb-4 gradient-text">Insights & Future Outlook</h1>
 
-            <h3>The "Code Agent" Evolution</h3>
-            <p>We are moving towards agents that behave more like developers:</p>
-            <ul>
-                <li>Instead of relying on a structured "Tool List," they will likely use standard CLI tools
-                    (<code>grep</code>, <code>curl</code>, <code>git</code>) inside a secure sandbox.</li>
-                <li>In this world, MCP servers might evolve into standardized libraries that these "Code Agents" import
-                    and use.</li>
-            </ul>
+                        <section id="truths" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">5 Surprising Truths About MCP</h2>
+                            <p class="lead">Research and early adoption have revealed counter-intuitive lessons:</p>
 
-            <h3>Standardization & Governance</h3>
-            <ul>
-                <li><strong>Universal Adoption:</strong> With OpenAI, Google, and Microsoft joining, MCP is poised to
-                    become the HTTP of the Agentic Web.</li>
-                <li><strong>Regulation:</strong> Expect stricter governance standards (like ISO 42001) to become
-                    mandatory for enterprise agents, enforcing audit logs and human oversight.</li>
-            </ul>
+                            <ul class="list-group list-group-flush mb-4">
+                                <li class="list-group-item bg-transparent">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">1. More Tools ≠ Smarter Agents</h5>
+                                    </div>
+                                    <p class="mb-1 small text-muted">Adding too many tools confuses models. Curation is
+                                        better than quantity.</p>
+                                </li>
+                                <li class="list-group-item bg-transparent">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">2. Don't Call, Code</h5>
+                                    </div>
+                                    <p class="mb-1 small text-muted">Writing code to use tools is 98% more efficient
+                                        than direct calls.</p>
+                                </li>
+                                <li class="list-group-item bg-transparent">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">3. Automation is Essential</h5>
+                                    </div>
+                                    <p class="mb-1 small text-muted">Manual server building doesn't scale. AutoMCP tools
+                                        are critical.</p>
+                                </li>
+                                <li class="list-group-item bg-transparent">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">4. The "Lethal Trifecta"</h5>
+                                    </div>
+                                    <p class="mb-1 small text-muted">Data + Internet + Action = Massive Risk (see
+                                        Indirect Prompt Injection).</p>
+                                </li>
+                                <li class="list-group-item bg-transparent">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">5. The "Social Contract"</h5>
+                                    </div>
+                                    <p class="mb-1 small text-muted">MCP is fundamentally a protocol for multi-agent
+                                        coordination.</p>
+                                </li>
+                            </ul>
+                        </section>
 
-            <h2>Conclusion</h2>
-            <p>The Model Context Protocol is the missing link that turns "Chatbots" into "Colleagues." By solving the
-                N×M integration problem, it lays the infrastructure for a world where AI agents can securely and
-                usefully inhabit our digital environments. The challenge now shifts from <strong>connection</strong>
-                (which MCP solves) to <strong>coordination, safety, and optimization</strong>.</p>
-        </article>
+                        <section id="trajectory" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Future Trajectory</h2>
 
-        <div class="doc-nav">
-            <a href="use-cases-and-ecosystem.html">← Previous: Use Cases</a>
-            <a href="index.html">Back to Home</a>
-            <a href="literature-review.html">Next: Literature →</a>
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="card h-100 bg-light border-0">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-primary">Hybrid Architectures</h6>
+                                            <p class="card-text small"><strong>REST/gRPC</strong> for backend rigid
+                                                pipes. <strong>MCP</strong> for flexible Agent-to-System interactions.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 bg-light border-0">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-primary">"Code Agent" Evolution</h6>
+                                            <p class="card-text small">Agents acting like devs: using standard CLI tools
+                                                (grep, curl, git) in sandboxes, with MCP as libraries.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 bg-light border-0">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-primary">Standardization</h6>
+                                            <p class="card-text small">Universal adoption (OpenAI, Google) making MCP
+                                                the "HTTP of Agentic Web". Stricter governance (ISO 42001).</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="conclusion" class="mb-5">
+                            <div class="alert alert-info border-primary">
+                                <h4 class="alert-heading h5">Conclusion</h4>
+                                <p>The Model Context Protocol turns "Chatbots" into "Colleagues." By solving the
+                                    connectivity problem, it shifts the challenge to <strong>coordination, safety, and
+                                        optimization</strong>.</p>
+                                <hr>
+                                <p class="mb-0 small">The infrastructure is now laid for a world where AI agents can
+                                    securely and usefully inhabit our digital environments.</p>
+                            </div>
+                        </section>
+
+                        <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+                            <a href="use-cases-and-ecosystem.html" class="btn btn-outline-secondary">← Previous: Use
+                                Cases</a>
+                            <a href="literature-review.html" class="btn btn-outline-primary">Next: Literature →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">
+                This repository serves as an academic resource for MCP security research. All content is maintained in
+                English
+                and follows IEEE/ACM academic standards.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle (Local) -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -5,135 +5,226 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Use Cases & Ecosystem - MCP Agentic Security Review</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap CSS (Local) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <h1><a href="index.html" class="no-underline" style="color: var(--text);">MCP Agentic Security Review</a></h1>
-            <div class="links">
-                <a href="index.html" class="no-underline">Home</a>
-                <a href="overview.html" class="no-underline">Overview</a>
-                <a href="architecture.html" class="no-underline">Architecture</a>
-                <a href="security-and-governance.html" class="no-underline">Security</a>
-                <a href="performance-and-optimization.html" class="no-underline">Performance</a>
-                <a href="use-cases-and-ecosystem.html" class="no-underline">Use Cases</a>
-                <a href="insights-and-future.html" class="no-underline">Insights</a>
-                <a href="literature-review.html" class="no-underline">Literature</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand gradient-text" href="index.html">MCP Agentic Security Review</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="overview.html">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="architecture.html">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="security-and-governance.html">Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="performance-and-optimization.html">Performance</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="use-cases-and-ecosystem.html">Use Cases</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="literature-review.html">Literature</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
-
-    <main>
-        <div class="doc-nav">
-            <a href="performance-and-optimization.html">← Previous: Performance</a>
-            <a href="index.html">Back to Home</a>
-            <a href="insights-and-future.html">Next: Insights →</a>
         </div>
+    </nav>
 
-        <article class="content">
-            <h1>Use Cases & Ecosystem</h1>
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 order-lg-2 mb-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h6 class="card-title text-uppercase text-muted small fw-bold">Research Paper</h6>
+                            <p class="card-text small">Download the full IEEE format paper for in-depth analysis.</p>
+                            <a href="https://github.com/yusufarbc/mcp-agentic-ai-security/blob/main/paper/paper.pdf"
+                                target="_blank" class="btn btn-sm btn-gradient w-100 mb-2">📥 Download PDF</a>
 
-            <h2>Real-World Application Domains</h2>
-            <p>MCP is not just theoretical; it's powering transformation across major sectors.</p>
+                        </div>
+                    </div>
 
-            <h3>1. Software Development & DevOps</h3>
-            <ul>
-                <li><strong>"Vibe Coding":</strong> Developers describe functionality in natural language; the agent
-                    uses MCP to read the codebase, run tests, and edit files.</li>
-                <li><strong>Infrastructure as Code:</strong> Agents connect to <strong>AWS</strong> or
-                    <strong>Kubernetes</strong> MCP servers to manage cloud resources (e.g., "Scale the production
-                    cluster to 5 nodes").
-                </li>
-                <li><strong>LSP Bridge:</strong> The <code>lsp-mcp</code> server translates "Language Server Protocol"
-                    (used by IDEs for intellisense) into MCP, allowing agents to "understand" code just like an IDE
-                    does.</li>
-            </ul>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h6 class="card-title text-uppercase text-muted small fw-bold">Jump To</h6>
+                            <nav class="nav flex-column small">
+                                <a class="nav-link text-muted py-1" href="#domains">Application Domains</a>
+                                <a class="nav-link text-muted py-1" href="#mas">Multi-Agent Systems</a>
+                                <a class="nav-link text-muted py-1" href="#ecosystem">Ecosystem Snapshot</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <h3>2. Enterprise Automation</h3>
-            <ul>
-                <li><strong>Financial Operations:</strong> Agents integrate with ERP systems to automate invoice
-                    processing, expense approvals, and audit trails.</li>
-                <li><strong>Supply Chain:</strong> Monitoring inventory levels via API and automatically triggering
-                    re-stocking workflows when thresholds are met.</li>
-                <li><strong>HR & Recruiting:</strong> analyzing resumes against job descriptions by connecting to ATS
-                    (Applicant Tracking Systems) via MCP.</li>
-            </ul>
+            <!-- Content Column -->
+            <div class="col-lg-9 order-lg-1">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Use Cases & Ecosystem</li>
+                    </ol>
+                </nav>
 
-            <h3>3. Data Science & Research</h3>
-            <ul>
-                <li><strong>Autonomous Analysis:</strong> An agent connects to a <strong>Database</strong> (PostgreSQL)
-                    and a <strong>Search Engine</strong> (Brave Search). It gathers external market data,
-                    cross-references it with internal sales data, and generates a report.</li>
-                <li><strong>Economic Modeling:</strong> Agents pulling live economic indicators (inflation,
-                    unemployment) from government APIs to update forecast models in real-time.</li>
-            </ul>
+                <article class="card shadow-sm border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <h1 class="display-5 fw-bold mb-4 gradient-text">Use Cases & Ecosystem</h1>
 
-            <h3>4. Cybersecurity (Dual-Use)</h3>
-            <ul>
-                <li><strong>Blue Team (Defense):</strong> Agents act as a "SOC Analyst," aggregating logs from Splunk,
-                    querying threat intelligence feeds (VirusTotal), and automatically triaging alerts.</li>
-                <li><strong>Red Team (Offense):</strong> Automated penetration testing agents that use MCP to scan
-                    networks, identify vulnerabilities, and attempt exploitation (in controlled environments).</li>
-            </ul>
+                        <section id="domains" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Real-World Application Domains</h2>
+                            <p class="lead">MCP is not just theoretical; it's powering transformation across major
+                                sectors.</p>
 
-            <h2>Multi-Agent Systems (MAS)</h2>
-            <p>MCP is the foundational "connective tissue" for multi-agent collaboration.</p>
+                            <div class="row g-4 mb-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-custom">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-primary">👨‍💻 Dev & DevOps</h5>
+                                            <ul class="small mb-0">
+                                                <li><strong>"Vibe Coding":</strong> Natural language coding via IDE
+                                                    integration.</li>
+                                                <li><strong>IaC:</strong> Agents managing AWS/K8s clusters.</li>
+                                                <li><strong>LSP Bridge:</strong> Connecting standard language servers to
+                                                    agents.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-custom">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-primary">🏢 Automation</h5>
+                                            <ul class="small mb-0">
+                                                <li><strong>Finance:</strong> Automated invoice & expense processing.
+                                                </li>
+                                                <li><strong>Supply Chain:</strong> Auto-restocking via API monitoring.
+                                                </li>
+                                                <li><strong>HR:</strong> Resume matching against ATS systems.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-custom">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-primary">📊 Data Science</h5>
+                                            <ul class="small mb-0">
+                                                <li><strong>Autonomous Analysis:</strong> Combining DB + Browse +
+                                                    Search.</li>
+                                                <li><strong>Modeling:</strong> Real-time economic forecasting updates.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-custom">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-primary">🛡️ Cybersecurity</h5>
+                                            <ul class="small mb-0">
+                                                <li><strong>Blue Team:</strong> Automated SOC analysis & triaging.</li>
+                                                <li><strong>Red Team:</strong> Controlled vulnerability scanning agents.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 
-            <h3>The "AgentX" Pattern</h3>
-            <p>Instead of one super-agent trying to do everything, tasks are decomposed:</p>
-            <ol>
-                <li><strong>Planner Agent:</strong> Breaks the user request into steps.</li>
-                <li><strong>Research Agent:</strong> Uses search and browser tools to gather info.</li>
-                <li><strong>Coder Agent:</strong> Writes scripts to process data.</li>
-                <li><strong>Reviewer Agent:</strong> Validates the output.</li>
-            </ol>
+                        <section id="mas" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Multi-Agent Systems (MAS)</h2>
+                            <p>MCP is the foundational "connective tissue" for multi-agent collaboration, enabling the
+                                <strong>"AgentX" Pattern</strong>.
+                            </p>
 
-            <p><strong>Why MCP matters here:</strong></p>
-            <ul>
-                <li><strong>Standard Interface:</strong> All these specialized agents speak the same protocol.</li>
-                <li><strong>Composable:</strong> One agent can act as an MCP <em>server</em> for another agent.</li>
-                <li><strong>Context Sharing:</strong> Resources can be passed between agents to maintain a shared
-                    understanding of the state.</li>
-            </ul>
+                            <div class="alert alert-secondary mb-4">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-dark me-2">Planner</span>
+                                    <span class="text-muted small">→ Breaks request into steps</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-info me-2">Research</span>
+                                    <span class="text-muted small">→ Gathers info via browser</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-warning text-dark me-2">Coder</span>
+                                    <span class="text-muted small">→ Writes processing scripts</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-success me-2">Reviewer</span>
+                                    <span class="text-muted small">→ Validates output</span>
+                                </div>
+                            </div>
 
-            <figure style="margin: 2rem 0;">
-                <img src="images/agenticai_infographic.png" alt="Agentic AI Systems and MCP"
-                    style="width: 100%; border-radius: 16px; border: 1px solid var(--border);">
-                <figcaption style="margin-top: 0.75rem; color: var(--muted); text-align: center; font-size: 0.9rem;">
-                    Overview of agentic AI systems and how MCP enables multi-agent collaboration
-                </figcaption>
-            </figure>
+                            <figure class="figure w-100 text-center">
+                                <img src="images/agenticai_infographic.png" class="figure-img img-fluid rounded shadow"
+                                    alt="Multi-Agent System Architecture">
+                                <figcaption class="figure-caption">How MCP enables multi-agent collaboration
+                                </figcaption>
+                            </figure>
+                        </section>
 
-            <h2>Ecosystem Snapshot</h2>
-            <p>The ecosystem is growing rapidly with both official and community support.</p>
-            <ul>
-                <li><strong>Official SDKs:</strong> TypeScript, Python, Java, Kotlin, C#.</li>
-                <li><strong>Platforms:</strong>
-                    <ul>
-                        <li><strong>Anthropic:</strong> Creator of the standard, native integration in Claude.</li>
-                        <li><strong>Replit:</strong> Native MCP support for AI coding.</li>
-                        <li><strong>Cloudflare:</strong> Hosting infrastructure for secure, scalable MCP servers.</li>
-                        <li><strong>Microsoft & Google:</strong> Adopting the standard for their agentic platforms.</li>
-                    </ul>
-                </li>
-                <li><strong>Tools:</strong>
-                    <ul>
-                        <li><strong>AutoMCP:</strong> Generates servers from OpenAPI specs.</li>
-                        <li><strong>Smithery & Glama:</strong> Discoverability registries for finding public MCP
-                            servers.</li>
-                    </ul>
-                </li>
-            </ul>
-        </article>
+                        <section id="ecosystem" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Ecosystem Snapshot</h2>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" class="text-muted w-25">SDKs</th>
+                                            <td>TypeScript, Python, Java, Kotlin, C#</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-muted">Platforms</th>
+                                            <td>Anthropic (Claude), Replit, Cloudflare, Microsoft, Google</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-muted">Tools</th>
+                                            <td>AutoMCP (OpenAPI compiler), Smithery.ai (Registry), Glama</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
 
-        <div class="doc-nav">
-            <a href="performance-and-optimization.html">← Previous: Performance</a>
-            <a href="index.html">Back to Home</a>
-            <a href="insights-and-future.html">Next: Insights →</a>
+                        <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+                            <a href="performance-and-optimization.html" class="btn btn-outline-secondary">← Previous:
+                                Performance</a>
+                            <a href="insights-and-future.html" class="btn btn-outline-primary">Next: Insights →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">
+                This repository serves as an academic resource for MCP security research. All content is maintained in
+                English
+                and follows IEEE/ACM academic standards.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle (Local) -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

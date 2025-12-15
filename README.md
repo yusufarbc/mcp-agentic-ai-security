@@ -1,77 +1,55 @@
-# MCP-Agentic-Security-Review
+# MCP Agentic AI Security Review
 
-## Live Web Page
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Documentation](https://img.shields.io/badge/docs-comprehensive-blue)](docs/)
+[![Status](https://img.shields.io/badge/status-active-success)](https://github.com/yusufarbc/mcp-agentic-ai-security)
 
-**https://yusufarbc.github.io/mcp-agentic-ai-security/**
+## 📖 Overview
 
-This repository aggregates academic work examining the architectural, security, and defense dimensions of the Model Context Protocol (MCP) ecosystem, along with a visual media set and an 18-paper reference library. The root `index.html` and the live page on GitHub Pages summarize this content on a single screen.
+**MCP Agentic AI Security Review** is a comprehensive academic repository dedicated to analyzing the **Model Context Protocol (MCP)** ecosystem. As AI agents evolve from passive chatbots to autonomous systems capable of executing code and manipulating data, the need for a standardized, secure communication layer has never been clearer.
 
-## Featured Visuals
+This repository aggregates architectural analysis, security research, threat modeling, and defense strategies for MCP-enabled systems. It serves as a central hub for researchers, developers, and security engineers to understand the "N×M" integration problem and the security implications of agentic interoperability.
 
-### MCP.png – The New Standard for AI Agents
-![The New Standard for AI Agents](media/MCP.png)
+🔗 **Live Documentation:** [https://yusufarbc.github.io/mcp-agentic-ai-security/](https://yusufarbc.github.io/mcp-agentic-ai-security/)
 
-This visual illustrates how MCP positions itself as a new "standard context layer" for LLM-based agents, explaining how it reduces integration chaos while providing security and consistency.
+## ✨ Key Features
 
-### infografik.png – Inter-Agent Communication: MCP and Other Protocols
-![Inter-Agent Communication: MCP and Other Protocols](media/infografik.png)
+*   **Architectural Deep Dive:** Detailed breakdown of the Client-Host-Server model, transport layers (stdio/SSE), and auto-generation tools like AutoMCP.
+*   **Security Research:** Comprehensive threat taxonomy including Indirect Prompt Injection (IPI), Tool Poisoning, and Supply Chain attacks.
+*   **Literature Review:** Curated collection of academic papers (IEEE/ACM) and empirical benchmarks (MCPGAUGE, LiveMCP-101).
+*   **Visual Assets:** High-quality diagrams and infographics explaining the MCP ecosystem (available in `website/images`).
+*   **Academic Paper:** Full LaTeX source for the accompanying research paper in `paper/`.
 
-This NotebookLM-based infographic juxtaposes the challenges in inter-agent communication with interoperability solutions such as MCP, ACP, A2A, and ANP.
+## 📂 Repository Structure
 
-### client-server-model.png – MCP Client-Server Architecture
-![MCP Client-Server Architecture](media/client-server-model.png)
+```
+├── docs/                   # Comprehensive markdown documentation
+│   ├── 01-overview.md      # Protocol fundamentals
+│   ├── 02-architecture.md  # Technical architecture
+│   ├── 03-security.md      # Threat landscape & defenses
+│   └── ...                 # Performance, Use Cases, Literature
+├── paper/                  # LaTeX source for the academic paper (IEEE format)
+├── reference/              # Collected academic papers and PDFs
+├── website/                # Source code for the documentation website
+│   ├── index.html          # Main landing page
+│   ├── pages/              # Individual documentation pages
+│   └── images/             # Diagrams and Infographics
+├── LICENSE                 # MIT License
+├── CONTRIBUTING.md         # Contribution guidelines
+└── README.md               # Project entry point
+```
 
-This diagram shows how a user request flows through the chain of LLM → MCP Client → Multiple MCP Servers → Tools, indicating that each server hosts its own toolset and MCP standardizes this interaction.
+## 🚀 Getting Started
 
-## Why is MCP Critical?
+### Prerequisites
 
-- **Universal Adapter:** Manages LLM-based agents' communication with tools, APIs, data sources, and devices via a common JSON-RPC based language.
-- **Risk Panorama:** 4 actors (malicious developer/user, external attacker, software/configuration error) and 16 threats; scans of 1,899 servers reported 7.2% general vulnerabilities, 5.5% tool poisoning, and 66% code smells.
-- **Benchmark Findings:** MCPGAUGE doesn't always provide benefit; MCP-Universe/LiveMCP-101 report < 60% success on real servers; MCPToolBench++ indicates format diversity as a bottleneck, while AutoMalTool can bypass many defenses (MCP-Guard achieves 96% accuracy with multi-layer detection).
-- **Defense Strategies:** IFC + taint tracking, sandbox profiles, OAuth/mTLS + scoped tokens, plan-based testing + logging + red teaming, signed packages/SBOM, and OpenAPI→AutoMCP automation are recommended.
+*   **Reading:** Start with the [Overview](docs/01-overview.md) to understand the core concepts.
+*   **Website:** Visit the [Live Site](https://yusufarbc.github.io/mcp-agentic-ai-security/) for an interactive experience.
+*   **LaTeX (Optional):** To compile the academic paper, you need a standard TeX distribution (TeX Live, MiKTeX).
 
-## Repo Map
+### Compilation (Academic Paper)
 
-| Path | Content |
-| --- | --- |
-| `index.html` | Landing page: repository structure, media gallery, reference table, security summary, and YouTube demo. |
-| `paper/` | IEEEtran LaTeX sources (`paper.tex`, `paper.pdf`, `protocol.png`, log/aux files). |
-| `media/` | Infographics, NotebookLM posters, MCP host diagrams, protocol schema, and `Yapay_Zeka_Ajanlari.mp4`. |
-| `reference/` | 18 PDFs; topics include MCP-Guard, AutoMalTool, MCPGAUGE, MCPmed, AgentX, A2AS, economic agents, etc. |
-| Root Files | `.editorconfig`, `.gitattributes`, `.gitignore`, README, and infrastructure for GitHub Pages. |
-
-## Comprehensive Documentation
-
-This repo contains an English documentation set that delves deep into MCP standards and security details:
-
-| File | Description |
-| --- | --- |
-| [01-overview.md](docs/01-overview.md) | **Overview:** What is MCP, the N×M problem, and core building blocks. |
-| [02-architecture.md](docs/02-architecture.md) | **Architecture:** Client-Host-Server model and transport layers. |
-| [03-security-and-governance.md](docs/03-security-and-governance.md) | **Security:** Threat vectors (IPI, Tool Poisoning) and defense strategies. |
-| [04-performance-and-optimization.md](docs/04-performance-and-optimization.md) | **Performance:** "Context Bloat" problem and code execution paradigm. |
-| [05-use-cases-and-ecosystem.md](docs/05-use-cases-and-ecosystem.md) | **Use Cases:** Enterprise automation, DevOps, and multi-agent systems. |
-| [06-insights-and-future.md](docs/06-insights-and-future.md) | **Insights:** Surprising findings and the protocol's future. |
-| [07-literature-review.md](docs/07-literature-review.md) | **Literature:** Academic references and literature review. |
-
-## Selected Media Showcase
-
-| Image | Description |
-| --- | --- |
-| `media/model.png` | Poster explaining server construction steps with MCP architecture + Python. |
-| `media/post.jpeg` | Diagram listing MCP host, protocol layer, and 17 threat vectors. |
-| `media/diagram.png` | Flow showing LLM → MCP Client → Multiple Server connection. |
-| `media/protocol.png` | Summarizes MCP as a standard bridge between IDEs, chat interfaces, and data/tool layers. |
-| `media/Yapay_Zeka_Ajanlari.mp4` | Local demo video (YouTube mirror `https://www.youtube.com/watch?v=MgGM5rkxL0c`). |
-
-`media/README.md` provides short descriptions for reuse of each file; displayed as cards on the landing page.
-
-## Reference Library (`reference/`)
-
-- 18 PDFs; covering areas such as MCP architecture, benchmark sets (MCPGAUGE, MCPToolBench++, LiveMCP-101), AutoMalTool, MCP-Guard, MCPmed, AgentX, A2AS, AI Agents for Economic Research.
-- `reference/Readme.md` includes Turkish/English abstracts for all papers. When adding a new source, simply number the file and add a note to Readme.
-
-## Compiling the Paper (`paper/`)
+To generate the PDF from the LaTeX source:
 
 ```bash
 cd paper
@@ -81,13 +59,31 @@ pdflatex paper.tex
 pdflatex paper.tex
 ```
 
-`paper.log` is for error analysis; `protocol.png` represents the figure in the paper.
+## 📊 Visuals & Architecture
 
-## Work Suggestions
+### The MCP Standard
+![MCP Standard](website/images/mcp_infographic.png)
+*MCP positions itself as the "USB-C for AI," standardizing how agents connect to tools and data.*
 
-1. Open `index.html` in a browser to check the current content summary (GitHub Pages link above).
-2. Keep both relevant Readme files and landing page sections synchronized when media and references are updated.
-3. When MCP security findings (e.g., LiveMCP-101 results, AutoMalTool logs) arrive, add them to `paper/` or a new `reports/` directory.
-4. In the future, you can create `docs/` or `scripts/` folders for OAuth/mTLS reference configurations, guard-model scenarios, and SBOM generation scripts.
+### Client-Server Architecture
+![Architecture](website/images/mcp_architecture.png)
+*A clear separation of concerns: The Host manages the User/Agent, while the Server manages Tool/Resource logic.*
 
-The README and `index.html` serve as high-level guides for the MCP-Agentic-Security-Review repository; they need to stay updated as work progresses.
+### Threat Landscape
+![Threats](website/images/mcp_threats.png)
+*The "Lethal Trifecta" of Data, Action, and Internet access creates new attack surfaces like Tool Poisoning.*
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting a Pull Request.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📚 References
+
+The `reference/` directory contains a curated list of papers cited in this project. See [reference/Readme.md](reference/Readme.md) for abstracts and details.
+
+---
+*Maintained by Yusuf Talha ARABACI*

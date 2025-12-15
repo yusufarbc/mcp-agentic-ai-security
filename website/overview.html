@@ -4,136 +4,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCP Overview - MCP Agentic Security Review</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Model Context Protocol: Overview - MCP Agentic Security Review</title>
+
+  <!-- Bootstrap CSS (Local) -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <nav>
-      <h1><a href="index.html" class="no-underline" style="color: var(--text);">MCP Agentic Security Review</a></h1>
-      <div class="links">
-        <a href="index.html" class="no-underline">Home</a>
-        <a href="overview.html" class="no-underline">Overview</a>
-        <a href="architecture.html" class="no-underline">Architecture</a>
-        <a href="security-and-governance.html" class="no-underline">Security</a>
-        <a href="performance-and-optimization.html" class="no-underline">Performance</a>
-        <a href="use-cases-and-ecosystem.html" class="no-underline">Use Cases</a>
-        <a href="insights-and-future.html" class="no-underline">Insights</a>
-        <a href="literature-review.html" class="no-underline">Literature</a>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand gradient-text" href="index.html">MCP Agentic Security Review</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="overview.html">Overview</a></li>
+          <li class="nav-item"><a class="nav-link" href="architecture.html">Architecture</a></li>
+          <li class="nav-item"><a class="nav-link" href="security-and-governance.html">Security</a></li>
+          <li class="nav-item"><a class="nav-link" href="literature-review.html">Literature</a></li>
+        </ul>
       </div>
-    </nav>
-  </header>
-
-  <main>
-    <div class="doc-nav">
-      <span style="color: var(--muted);">← Previous</span>
-      <a href="index.html">Back to Home</a>
-      <a href="architecture.html">Next: Architecture →</a>
     </div>
+  </nav>
 
-    <article class="content">
-      <h1>Model Context Protocol (MCP): Overview</h1>
+  <!-- Main Content -->
+  <div class="container my-5">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-3 order-lg-2 mb-4">
+        <div class="sticky-top" style="top: 100px;">
+          <div class="card shadow-sm mb-4">
+            <div class="card-body">
+              <h6 class="card-title text-uppercase text-muted small fw-bold">Research Paper</h6>
+              <p class="card-text small">Download the full IEEE format paper for in-depth analysis.</p>
+              <a href="https://github.com/yusufarbc/mcp-agentic-ai-security/blob/main/paper/paper.pdf" target="_blank"
+                class="btn btn-sm btn-gradient w-100 mb-2">📥 Download PDF</a>
 
-      <h2>Introduction: The "USB-C for AI"</h2>
-      <p>The Model Context Protocol (MCP) is an open standard that enables AI models to securely and efficiently
-        interact with external tools and data resources. It serves as a "universal translator" or connector, similar to
-        a USB-C port, allowing any AI application (the "host") to connect with any external tool or data source (the
-        "server") without needing custom integrations for each pair.</p>
-      <p>This standardization transforms AI agents from passive text generators into active, autonomous participants in
-        workflows, capable of reading files, querying databases, and executing complex tasks in the real world.</p>
+            </div>
+          </div>
 
-      <h2>The Challenge: The "N×M" Integration Problem</h2>
-      <p>Before MCP, the AI landscape was fragmented. Integrating AI agents with external tools presented a
-        combinatorial challenge:</p>
-      <ul>
-        <li><strong>N</strong> Agents (e.g., Claude, ChatGPT, IDE assistants)</li>
-        <li><strong>M</strong> Data Sources/Tools (e.g., Google Drive, Slack, PostgreSQL, GitHub)</li>
-      </ul>
-      <p>Without a standard, developers had to build <strong>N × M</strong> unique connectors. This resulted in:</p>
-      <ul>
-        <li><strong>High Maintenance:</strong> Every API change broke integrations.</li>
-        <li><strong>Silos:</strong> Tools built for one platform didn't work on another.</li>
-        <li><strong>Inefficiency:</strong> Redundant work stifled innovation.</li>
-      </ul>
-      <p><strong>MCP solves this by creating a shared language.</strong> Developers build an MCP server for their tool
-        <em>once</em>, and it instantly works with any MCP-compliant client (agent).
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h6 class="card-title text-uppercase text-muted small fw-bold">Table of Contents</h6>
+              <nav class="nav flex-column small">
+                <a class="nav-link text-muted py-1" href="#introduction">Introduction</a>
+                <a class="nav-link text-muted py-1" href="#challenge">The Challenge</a>
+                <a class="nav-link text-muted py-1" href="#primitives">Core Primitives</a>
+                <a class="nav-link text-muted py-1" href="#comparison">MCP vs APIs</a>
+                <a class="nav-link text-muted py-1" href="#value">Strategic Value</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="col-lg-9 order-lg-1">
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Overview</li>
+          </ol>
+        </nav>
+
+        <article class="card shadow-sm border-0">
+          <div class="card-body p-4 p-md-5">
+            <h1 class="display-5 fw-bold mb-4 gradient-text">Model Context Protocol (MCP): Overview</h1>
+
+            <section id="introduction" class="mb-5">
+              <h2 class="h3 text-primary mb-3">Introduction: The "USB-C for AI"</h2>
+              <p class="lead">The Model Context Protocol (MCP) is an open standard that enables AI models to securely
+                and efficiently interact with external tools and data resources.</p>
+              <p>It serves as a "universal translator" or connector, similar to a USB-C port, allowing any AI
+                application (the "host") to connect with any external tool or data source (the "server") without needing
+                custom integrations for each pair.</p>
+              <div class="alert alert-info">
+                <strong>Transformative Impact:</strong> This standardization transforms AI agents from passive text
+                generators into active, autonomous participants in workflows, capable of reading files, querying
+                databases, and executing complex tasks in the real world.
+              </div>
+            </section>
+
+            <section id="challenge" class="mb-5">
+              <h2 class="h3 text-primary mb-3">The Challenge: The "N×M" Integration Problem</h2>
+              <p>Before MCP, the AI landscape was fragmented. Integrating AI agents with external tools presented a
+                combinatorial challenge:</p>
+              <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item bg-transparent"><strong>N Agents</strong> (e.g., Claude, ChatGPT, IDE
+                  assistants)</li>
+                <li class="list-group-item bg-transparent"><strong>M Data Sources/Tools</strong> (e.g., Google Drive,
+                  Slack, PostgreSQL, GitHub)</li>
+              </ul>
+              <p>Without a standard, developers had to build <strong>N × M</strong> unique connectors. This resulted in:
+              </p>
+              <div class="row g-3 mb-3">
+                <div class="col-md-4">
+                  <div class="card h-100 bg-light border-0">
+                    <div class="card-body">
+                      <h6 class="card-title">🔌 High Maintenance</h6>
+                      <p class="card-text small">Every API change broke integrations.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card h-100 bg-light border-0">
+                    <div class="card-body">
+                      <h6 class="card-title">🏝️ Silos</h6>
+                      <p class="card-text small">Tools built for one platform didn't work on another.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card h-100 bg-light border-0">
+                    <div class="card-body">
+                      <h6 class="card-title">📉 Inefficiency</h6>
+                      <p class="card-text small">Redundant work stifled innovation.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p><strong>MCP solves this by creating a shared language.</strong> Developers build an MCP server for
+                their tool <em>once</em>, and it instantly works with any MCP-compliant client (agent).</p>
+            </section>
+
+            <section id="primitives" class="mb-5">
+              <h2 class="h3 text-primary mb-3">Core Primitives</h2>
+              <p>MCP defines three primary mechanisms ("primitives") for interaction:</p>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Primitive</th>
+                      <th>Controlled By</th>
+                      <th>Description</th>
+                      <th>Example</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="badge bg-primary">Tools</span></td>
+                      <td><strong>Model</strong></td>
+                      <td>Executable functions that allow the AI to <em>act</em>.</td>
+                      <td><code>send_email</code>, <code>query_db</code></td>
+                    </tr>
+                    <tr>
+                      <td><span class="badge bg-success">Resources</span></td>
+                      <td><strong>Application</strong></td>
+                      <td>Read-only data sources that provide <em>context</em>.</td>
+                      <td>File contents, Logs</td>
+                    </tr>
+                    <tr>
+                      <td><span class="badge bg-warning text-dark">Prompts</span></td>
+                      <td><strong>User</strong></td>
+                      <td>Pre-defined templates for standard workflows.</td>
+                      <td>"Analyze codebase"</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section id="comparison" class="mb-5">
+              <h2 class="h3 text-primary mb-3">MCP vs. Traditional APIs</h2>
+              <p>While traditional REST APIs are essential for web services, they are not optimized for autonomous
+                agents. MCP introduces key differences:</p>
+              <ol class="list-group list-group-numbered mb-4">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">Stateful Sessions</div>
+                    Maintains a connection session to manage context effectively.
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">Dynamic Discovery</div>
+                    Agents can "discover" capabilities at runtime (progressive disclosure).
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">Bidirectional Communication</div>
+                    Servers can push notifications (e.g., "Resource Updated") to clients.
+                  </div>
+                </li>
+              </ol>
+            </section>
+
+            <section id="value" class="mb-5">
+              <h2 class="h3 text-primary mb-3">Strategic Value</h2>
+              <p>Adopting MCP moves the industry from a fragmented ecosystem of bespoke connectors to a scalable,
+                interoperable infrastructure.</p>
+              <figure class="figure w-100 text-center my-4">
+                <img src="images/mcp_infographic.png" class="figure-img img-fluid rounded shadow"
+                  alt="MCP Ecosystem Infographic">
+                <figcaption class="figure-caption">Overview of the MCP ecosystem standardizing AI interactions
+                </figcaption>
+              </figure>
+            </section>
+
+            <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+              <span class="text-muted">Previous: None</span>
+              <a href="architecture.html" class="btn btn-outline-primary">Next: Architecture →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="mb-0">
+        This repository serves as an academic resource for MCP security research. All content is maintained in English
+        and follows IEEE/ACM academic standards.
       </p>
-
-      <h2>Core Primitives</h2>
-      <p>MCP defines three primary mechanisms ("primitives") for interaction:</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Primitive</th>
-            <th>Controlled By</th>
-            <th>Description</th>
-            <th>Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Tools</strong></td>
-            <td><strong>Model</strong></td>
-            <td>Executable functions that allow the AI to <em>act</em>. The model decides when to call a tool to perform
-              a specific task.</td>
-            <td><code>send_email</code>, <code>query_database</code>, <code>create_github_issue</code></td>
-          </tr>
-          <tr>
-            <td><strong>Resources</strong></td>
-            <td><strong>Application</strong></td>
-            <td>Read-only data sources that provide <em>context</em>. The application exposes these for the model to
-              read.</td>
-            <td>Database schemas, file contents, API response logs</td>
-          </tr>
-          <tr>
-            <td><strong>Prompts</strong></td>
-            <td><strong>User</strong></td>
-            <td>Pre-defined templates and workflows that standardize common interactions for users.</td>
-            <td>"Analyze this codebase", "Summarize recent logs"</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>MCP vs. Traditional APIs</h2>
-      <p>While traditional REST APIs are essential for web services, they are not optimized for autonomous agents. MCP
-        introduces key differences:</p>
-      <ol>
-        <li><strong>Stateful Sessions:</strong> Unlike stateless REST APIs, MCP maintains a connection session. This
-          allows the server to manage context, reducing the need for the agent to re-send mostly static information with
-          every request.</li>
-        <li><strong>Dynamic Discovery:</strong> Agents can query an MCP server to "discover" what tools and resources
-          are available at runtime. This enables "progressive disclosure," where an agent learns about a system's
-          capabilities as needed.</li>
-        <li><strong>Bidirectional Communication:</strong> MCP allows servers to send notifications to clients (e.g.,
-          "Resource Updated"), enabling real-time, event-driven workflows that are difficult to achieve with standard
-          request-response models.</li>
-      </ol>
-
-      <h2>Strategic Value</h2>
-      <p>Adopting MCP moves the industry from a fragmented ecosystem of bespoke connectors to a scalable, interoperable
-        infrastructure. It allows:</p>
-      <ul>
-        <li><strong>Tool Builders</strong> to write one integration that works everywhere.</li>
-        <li><strong>Agent Developers</strong> to access a vast library of pre-built tools.</li>
-        <li><strong>Enterprises</strong> to securely govern AI access to internal data.</li>
-      </ul>
-
-      <figure style="margin: 2rem 0;">
-        <img src="images/mcp_infographic.png" alt="MCP Ecosystem Infographic"
-          style="width: 100%; border-radius: 16px; border: 1px solid var(--border);">
-        <figcaption style="margin-top: 0.75rem; color: var(--muted); text-align: center; font-size: 0.9rem;">
-          Comprehensive overview of the MCP ecosystem and its role in standardizing AI agent interactions
-        </figcaption>
-      </figure>
-    </article>
-
-    <div class="doc-nav">
-      <span style="color: var(--muted);">← Previous</span>
-      <a href="index.html">Back to Home</a>
-      <a href="architecture.html">Next: Architecture →</a>
     </div>
-  </main>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (Local) -->
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

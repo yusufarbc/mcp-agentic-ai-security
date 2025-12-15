@@ -5,149 +5,221 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCP Architecture - MCP Agentic Security Review</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap CSS (Local) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <h1><a href="index.html" class="no-underline" style="color: var(--text);">MCP Agentic Security Review</a></h1>
-            <div class="links">
-                <a href="index.html" class="no-underline">Home</a>
-                <a href="overview.html" class="no-underline">Overview</a>
-                <a href="architecture.html" class="no-underline">Architecture</a>
-                <a href="security-and-governance.html" class="no-underline">Security</a>
-                <a href="performance-and-optimization.html" class="no-underline">Performance</a>
-                <a href="use-cases-and-ecosystem.html" class="no-underline">Use Cases</a>
-                <a href="insights-and-future.html" class="no-underline">Insights</a>
-                <a href="literature-review.html" class="no-underline">Literature</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand gradient-text" href="index.html">MCP Agentic Security Review</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="overview.html">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="architecture.html">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="security-and-governance.html">Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="literature-review.html">Literature</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
-
-    <main>
-        <div class="doc-nav">
-            <a href="overview.html">← Previous: Overview</a>
-            <a href="index.html">Back to Home</a>
-            <a href="security-and-governance.html">Next: Security →</a>
         </div>
+    </nav>
 
-        <article class="content">
-            <h1>MCP Architecture & Mechanics</h1>
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 order-lg-2 mb-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h6 class="card-title text-uppercase text-muted small fw-bold">Research Paper</h6>
+                            <p class="card-text small">Download the full IEEE format paper for in-depth analysis.</p>
+                            <a href="https://github.com/yusufarbc/mcp-agentic-ai-security/blob/main/paper/paper.pdf"
+                                target="_blank" class="btn btn-sm btn-gradient w-100 mb-2">📥 Download PDF</a>
 
-            <h2>High-Level Architecture</h2>
-            <p>The Model Context Protocol operates on a distinct <strong>Client-Host-Server</strong> model designed to
-                separate the AI's reasoning logic from the specific implementations of external tools.</p>
+                        </div>
+                    </div>
 
-            <h3>Components</h3>
-            <ol>
-                <li><strong>MCP Host:</strong>
-                    <ul>
-                        <li>The user-facing application where the AI model "lives" (e.g., Claude Desktop, Cursor IDE, or
-                            a custom AI application).</li>
-                        <li>It manages the user interface, the connection lifecycle, and security boundaries.</li>
-                    </ul>
-                </li>
-                <li><strong>MCP Client:</strong>
-                    <ul>
-                        <li>A protocol-level component embedded within the Host.</li>
-                        <li>It establishes a 1:1 connection with an MCP Server.</li>
-                        <li>It translates the LLM's natural language intent into structured MCP requests (JSON-RPC).
-                        </li>
-                    </ul>
-                </li>
-                <li><strong>MCP Server:</strong>
-                    <ul>
-                        <li>A standalone service that exposes specific capabilities (Tools, Resources, Prompts).</li>
-                        <li>It effectively acts as a gateway or "driver" for an external service (like Stripe, GitHub,
-                            or a local database).</li>
-                    </ul>
-                </li>
-            </ol>
-
-            <figure style="margin: 2rem 0;">
-                <img src="images/mcp_architecture.png" alt="MCP Client-Host-Server Architecture"
-                    style="width: 100%; border-radius: 16px; border: 1px solid var(--border);">
-                <figcaption style="margin-top: 0.75rem; color: var(--muted); text-align: center; font-size: 0.9rem;">
-                    Detailed view of the MCP architecture showing the interaction between Host, Client, and Server
-                    components
-                </figcaption>
-            </figure>
-
-            <div class="diagram">
-                <pre>
-User ←→ MCP Host ←→ MCP Client ⇄ MCP Server ←→ External System/API
-        </pre>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h6 class="card-title text-uppercase text-muted small fw-bold">Jump To</h6>
+                            <nav class="nav flex-column small">
+                                <a class="nav-link text-muted py-1" href="#components">Components</a>
+                                <a class="nav-link text-muted py-1" href="#transport">Transport Layers</a>
+                                <a class="nav-link text-muted py-1" href="#lifecycle">Server Lifecycle</a>
+                                <a class="nav-link text-muted py-1" href="#automcp">AutoMCP Automation</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <h2>Transport Layers</h2>
-            <p>MCP is transport-agnostic but primarily defines two standard transport mechanisms:</p>
+            <!-- Content Column -->
+            <div class="col-lg-9 order-lg-1">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Architecture</li>
+                    </ol>
+                </nav>
 
-            <h3>1. Stdio (Standard Input/Output)</h3>
-            <ul>
-                <li><strong>Use Case:</strong> Local tools, secure enterprise environments, IDE integrations.</li>
-                <li><strong>Mechanism:</strong> The Host spawns the Server as a customized subprocess. Communication
-                    happens over standard input (stdin) and output (stdout).</li>
-                <li><strong>Pros:</strong> Ultra-low latency, highly secure (data never leaves the machine/network),
-                    simple to deploy locally.</li>
-                <li><strong>Cons:</strong> Limited to the local machine; cannot easily be accessed remotely without
-                    tunneling.</li>
-            </ul>
+                <article class="card shadow-sm border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <h1 class="display-5 fw-bold mb-4 gradient-text">MCP Architecture & Mechanics</h1>
 
-            <h3>2. HTTP with SSE (Server-Sent Events)</h3>
-            <ul>
-                <li><strong>Use Case:</strong> Cloud-hosted agents, distributed systems, SaaS integrations.</li>
-                <li><strong>Mechanism:</strong>
-                    <ul>
-                        <li><strong>Server-to-Client:</strong> Uses Server-Sent Events (SSE) to push messages and
-                            notifications.</li>
-                        <li><strong>Client-to-Server:</strong> Uses standard HTTP POST requests.</li>
-                    </ul>
-                </li>
-                <li><strong>Pros:</strong> Scalable, works over standard web infrastructure, firewall-friendly.</li>
-                <li><strong>Cons:</strong> Higher latency due to HTTP overhead; requires TLS and authentication for
-                    security.</li>
-            </ul>
+                        <section id="components" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">High-Level Architecture</h2>
+                            <p class="lead">The Model Context Protocol operates on a distinct
+                                <strong>Client-Host-Server</strong> model designed to separate the AI's reasoning logic
+                                from the specific implementations of external tools.
+                            </p>
 
-            <h2>Server Lifecycle</h2>
-            <p>An MCP server's life involves four key stages:</p>
-            <ol>
-                <li><strong>Creation:</strong> Defining capabilities (tools/resources) and implementing the logic.</li>
-                <li><strong>Deployment:</strong> Running the server either locally (stdio) or on a cloud platform
-                    (HTTP/SSE).</li>
-                <li><strong>Operation:</strong> Active handling of requests (ListTools, CallTool, ReadResource).</li>
-                <li><strong>Maintenance:</strong> Updates, logging, and security patching.</li>
-            </ol>
+                            <div class="card bg-light border-0 mb-4">
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-0 d-grid gap-3">
+                                        <li class="d-flex gap-3">
+                                            <div class="badge bg-primary rounded-circle p-2 d-flex align-items-center justify-content-center"
+                                                style="width: 32px; height: 32px;">1</div>
+                                            <div>
+                                                <strong>MCP Host:</strong> The user-facing application (e.g., Claude
+                                                Desktop, IDE) managing connection lifecycle and security boundaries.
+                                            </div>
+                                        </li>
+                                        <li class="d-flex gap-3">
+                                            <div class="badge bg-secondary rounded-circle p-2 d-flex align-items-center justify-content-center"
+                                                style="width: 32px; height: 32px;">2</div>
+                                            <div>
+                                                <strong>MCP Client:</strong> Embeds within the Host, translating LLM
+                                                intent into structured JSON-RPC requests.
+                                            </div>
+                                        </li>
+                                        <li class="d-flex gap-3">
+                                            <div class="badge bg-success rounded-circle p-2 d-flex align-items-center justify-content-center"
+                                                style="width: 32px; height: 32px;">3</div>
+                                            <div>
+                                                <strong>MCP Server:</strong> Exposes capabilities (tools/resources) and
+                                                acts as the gateway to external services.
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
 
-            <h2>Automation: The AutoMCP Revolution</h2>
-            <p>One of the significant barriers to MCP adoption was the manual effort required to build servers for
-                existing APIs. This "boilerplate" problem has been addressed by tools like <strong>AutoMCP</strong>.</p>
-            <ul>
-                <li><strong>What it is:</strong> A compiler that takes a standard <strong>OpenAPI Specification</strong>
-                    (Swagger) as input.</li>
-                <li><strong>What it does:</strong> Automatically generates a fully functional MCP server.</li>
-                <li><strong>Impact:</strong> It reduces the time to "agent-enable" an API from days to minutes.</li>
-                <li><strong>Reliability:</strong> Studies show ~99.9% success rates for generated servers after minor
-                    adjustments to the source API spec (average 19 lines of config).</li>
-            </ul>
-            <p>This automation capability is crucial for scaling the ecosystem, allowing thousands of existing REST APIs
-                to become "agent-ready" almost overnight.</p>
+                            <figure class="figure w-100 text-center">
+                                <img src="images/mcp_architecture.png" class="figure-img img-fluid rounded shadow"
+                                    alt="MCP Architecture Diagram">
+                                <figcaption class="figure-caption">Detailed interaction between Host, Client, and Server
+                                </figcaption>
+                            </figure>
+                        </section>
 
-            <figure style="margin: 2rem 0;">
-                <img src="images/mcp_protocol.png" alt="MCP Protocol Flow"
-                    style="width: 100%; border-radius: 16px; border: 1px solid var(--border);">
-                <figcaption style="margin-top: 0.75rem; color: var(--muted); text-align: center; font-size: 0.9rem;">
-                    MCP protocol communication flow between clients and servers
-                </figcaption>
-            </figure>
-        </article>
+                        <section id="transport" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Transport Layers</h2>
+                            <p>MCP is transport-agnostic but primarily defines two standard mechanisms:</p>
 
-        <div class="doc-nav">
-            <a href="overview.html">← Previous: Overview</a>
-            <a href="index.html">Back to Home</a>
-            <a href="security-and-governance.html">Next: Security →</a>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-custom">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-dark">🖥️ Stdio (Standard I/O)</h5>
+                                            <p class="small text-muted mb-2">For local, secure environments</p>
+                                            <hr>
+                                            <ul class="small mb-0 ps-3">
+                                                <li><strong>Mechanism:</strong> Subprocess creation</li>
+                                                <li><strong>Pros:</strong> Ultra-low latency, high security</li>
+                                                <li><strong>Cons:</strong> Local machine only</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-custom">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-dark">☁️ HTTP with SSE</h5>
+                                            <p class="small text-muted mb-2">For cloud & distributed agents</p>
+                                            <hr>
+                                            <ul class="small mb-0 ps-3">
+                                                <li><strong>Mechanism:</strong> Server-Sent Events + POST</li>
+                                                <li><strong>Pros:</strong> Scalable, firewall-friendly</li>
+                                                <li><strong>Cons:</strong> Higher latency, auth required</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="lifecycle" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Server Lifecycle</h2>
+                            <p>An MCP server's life involves four key stages:</p>
+                            <div class="d-flex justify-content-between text-center flex-wrap gap-2">
+                                <div class="p-3 bg-light rounded flex-grow-1"><strong>1. Creation</strong><br><small
+                                        class="text-muted">Define logic</small></div>
+                                <div class="p-3 bg-light rounded flex-grow-1"><strong>2. Deployment</strong><br><small
+                                        class="text-muted">Local/Cloud</small></div>
+                                <div class="p-3 bg-light rounded flex-grow-1"><strong>3. Operation</strong><br><small
+                                        class="text-muted">Handle requests</small></div>
+                                <div class="p-3 bg-light rounded flex-grow-1"><strong>4. Maintenance</strong><br><small
+                                        class="text-muted">Security patch</small></div>
+                            </div>
+                        </section>
+
+                        <section id="automcp" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Automation: The AutoMCP Revolution</h2>
+                            <p><strong>AutoMCP</strong> addresses the "boilerplate" problem by compiling OpenAPI
+                                Specifications into functional MCP servers.</p>
+                            <div class="alert alert-secondary d-flex align-items-center">
+                                <div class="me-3 display-6">🚀</div>
+                                <div>
+                                    <strong>Impact:</strong> Reduces time-to-agent from days to minutes with ~99.9%
+                                    reliability. This enables thousands of existing REST APIs to become "agent-ready"
+                                    instantly.
+                                </div>
+                            </div>
+                            <figure class="figure w-100 text-center mt-3">
+                                <img src="images/mcp_protocol.png" class="figure-img img-fluid rounded shadow"
+                                    alt="MCP Protocol Flow">
+                                <figcaption class="figure-caption">MCP protocol communication flow</figcaption>
+                            </figure>
+                        </section>
+
+                        <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+                            <a href="overview.html" class="btn btn-outline-secondary">← Previous: Overview</a>
+                            <a href="security-and-governance.html" class="btn btn-outline-primary">Next: Security →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">
+                This repository serves as an academic resource for MCP security research. All content is maintained in
+                English
+                and follows IEEE/ACM academic standards.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle (Local) -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

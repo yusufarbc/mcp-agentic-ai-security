@@ -1,43 +1,48 @@
-## Model Bağlam Protokolü (MCP) Ekosisteminin Eleştirel Güvenlik İncelemesi
+# MCP Academic Paper (IEEE Format)
 
-### Özet
-Model Bağlam Protokolü (MCP), Büyük Dil Modelleri (LLM) ile harici araçlar ve kaynaklar arasındaki çift yönlü, şema tabanlı iletişimi ve dinamik keşif süreçlerini standartlaştırmaktadır. Bu protokol, entegrasyon parçalanmasını (fragmentation) azaltmayı hedeflerken; araç zehirleme (tool poisoning), istem enjeksiyonu (prompt injection), sunucu ifşası ve yapılandırma hataları gibi yeni risk vektörlerini de beraberinde getirmektedir. Literatürde, MCP sunucu yaşam döngüsü —oluşturma, dağıtım, işletim ve bakım— 16 temel faaliyet ve bunlara karşılık gelen 16 tehdit senaryosu üzerinden sınıflandırılmaktadır. 1.899 sunucu üzerinde yapılan taramalarda, sunucuların %7,2’sinde genel güvenlik açıkları, %5,5’inde araç zehirleme riski ve %66’sında "kod kokusu" (code smell) olarak nitelendirilen yapısal sorunlar tespit edilmiştir.
+This directory contains the LaTeX source code and assets for the academic paper titled **"A Critical Security and Architectural Review of the Model Context Protocol (MCP) Ecosystem"**.
 
-### 1. Mimari Bileşenler ve Sınırlar
-- **Host/Client (İstemci):** LLM’i barındıran, araç ve kaynak keşfini yöneten ve harici veriye erişim sağlayan yüzeydir.
-- **Server (Sunucu):** Araçları ve kaynakları JSON-RPC protokolü üzerinden sunar. Bu bileşende kimlik doğrulama ve izolasyon kalitesi güvenlik açısından kritiktir.
-- **Tools (Araçlar):** Harici işlevleri temsil eder. Tanımlama (description) alanları, istem enjeksiyonuna ve araç zehirleme saldırılarına karşı savunmasız olabilir.
-- **Taşıma Katmanı (Transport):** İletişim StdIO veya HTTPS/SSE üzerinden sağlanır. Şifreleme standartları ile OAuth/mTLS uygulamaları, saldırı yüzeyinin genişliğini belirleyen temel faktörlerdir.
+## Abstract
 
-### 2. Tehdit Taksonomisi (4 Aktör, 16 Senaryo)
-- **Kötü Niyetli Geliştirici:** Araç zehirleme, gölge sunucu (shadow server) oluşturma ve isim çakışması (namespace collision) yoluyla saldırılar düzenler.
-- **Dış Saldırgan:** Dolaylı istem enjeksiyonu, kurulum sahtekârlığı ve açık sunucu istismarı gibi yöntemleri kullanır.
-- **Kötü Niyetli Kullanıcı:** STAC (ardışık düşük riskli araçlarla yüksek etkili eylem zinciri oluşturma), sanal alan (sandbox) kaçışı ve oturumun yeniden kullanımı (session reuse) gibi tekniklere başvurur.
-- **Yazılım/Konfigürasyon Hataları:** Kimlik bilgisi sızıntıları, komut enjeksiyonları ve zayıf TLS/OAuth yapılandırmalarından kaynaklanan zafiyetlerdir.
+The Model Context Protocol (MCP), introduced in late 2024, standardizes bidirectional, schema-based communication and dynamic discovery processes between Large Language Models (LLMs) and external tools/resources. While aiming to reduce integration fragmentation, this protocol introduces new risk vectors such as tool poisoning, prompt injection, server exposure, and configuration errors. In the literature, the MCP server lifecycle—creation, deployment, operation, and maintenance—is classified into 16 core activities and corresponding threat scenarios. Scans of 1,899 servers revealed general vulnerabilities in 7.2%, tool poisoning risks in 5.5%, and structural issues characterized as "code smells" in 66%.
 
-### 3. Ampirik Bulgular
-- Hasan ve ark. (2025) tarafından 1.899 açık kaynak MCP sunucusu üzerinde yapılan analizde; %7,2 oranında genel açık, %5,5 oranında araç zehirleme riski, %66 oranında kod kokusu ve %14,4 oranında hata kalıbı tespit edilmiştir.
-- Geleneksel statik analiz yöntemlerinin MCP'ye özgü açıkları tespit etmekte yetersiz kaldığı, dolayısıyla MCP odaklı tarama araçlarına ihtiyaç duyulduğu vurgulanmıştır.
+## Key Findings
 
-### 4. Performans ve Kıyaslamalar (Benchmarks)
-- **MCPGAUGE:** MCP entegrasyonunun her senaryoda mutlak fayda sağlamadığı; bazı durumlarda düşük proaktiviteye ve yüksek maliyet/gider oranına yol açtığı gözlemlenmiştir.
-- **MCP-Universe, LiveMCP-101:** Gerçek sunucular üzerinde yapılan testlerde, öncü (frontier) modellerin başarı oranının %60'ın altında kaldığı, özellikle uzun bağlam (long-context) ve bilinmeyen araç hatalarının belirginleştiği raporlanmıştır.
-- **MCPToolBench++:** 4.000'den fazla sunucuyu kapsayan bu çalışmada, format çeşitliliği ve bağlam penceresi kısıtlarının önemli bir darboğaz oluşturduğu belirlenmiştir.
-- **Red Teaming (Kırmızı Takım):** AutoMalTool gibi araçların mevcut savunmaları aşabildiği, ancak çok katmanlı tespit mekanizması kullanan MCP-Guard'ın %96 doğruluk oranına ulaştığı görülmüştür.
+### 1. Architectural Components and Boundaries
+-   **Host/Client:** The surface hosting the LLM, managing tool/resource discovery, and providing access to external data.
+-   **Server:** Exposes tools and resources via the JSON-RPC protocol. Authentication and isolation quality in this component are critical for security.
+-   **Tools:** Represent external functions. Description fields can be vulnerable to prompt injection and tool poisoning attacks.
 
-### 5. Savunma Stratejileri
-- **Bilgi Akış Kontrolü (IFC) ve Leke Takibi (Taint-tracking):** Zehirli girdilerin kritik eylemleri tetiklemesini engellemek amacıyla kullanılmalıdır.
-- **Sandboxing (Yalıtma):** Araç erişimleri dosya, ağ ve sistem komutları düzeyinde sınırlandırılmalı; dağıtıma özel profiller oluşturulmalıdır.
-- **Kimlik ve Taşıma Güvenliği:** TLS/mTLS, OAuth 2.1 ve kaynak göstergeleri (resource indicators) standartlaştırılmalı; kapsamı daraltılmış (scoped) ve kısa ömürlü token'lar tercih edilmelidir.
-- **Gözlemlenebilirlik:** Plan tabanlı testler (LiveMCP-101), detaylı günlükleme (logging), anomali takibi ve periyodik kırmızı takım tatbikatları uygulanmalıdır.
-- **Tedarik Zinciri Güvenliği:** İmzalı paketler, sürüm sabitleme (version pinning), SBOM kullanımı ve açıklama/şema bütünlük doğrulamaları süreçlere dahil edilmelidir.
+### 2. Threat Landscape (The "Lethal Trifecta")
+-   **Malicious Developer:** Attacks via tool poisoning, shadow servers, and namespace collisions.
+-   **External Attacker:** Uses methods like indirect prompt injection, installation fraud, and open server exploitation.
+-   **Malicious User:** Employs techniques like STAC (creating high-impact action chains with consecutive low-risk tools), sandbox escape, and session reuse.
+-   **Software/Configuration Errors:** Vulnerabilities stemming from credential leakage, command injections, and weak TLS/OAuth configurations.
 
-### 6. Öneriler
-1.  **CI/CD Entegrasyonu:** Açıklama zehirleme, şema tutarlılığı ve anlamsal tespitleri içeren MCP'ye özgü taramalar CI/CD boru hatlarına eklenmelidir.
-2.  **Paket Güvenliği:** İmzalı paket dağıtımı, sürüm sabitleme, SBOM üretimi ve her yayın sürümünde bütünlük doğrulaması standart hale getirilmelidir.
-3.  **İnsan Onayı ve Kısıtlamalar:** Yüksek etkili eylemlerde koruma (guard) modelleri ve insan onayı şart koşulmalı; araç başına kapsam/kota sınırları ve kapsamı daraltılmış kimlik bilgileri kullanılmalıdır.
-4.  **Stres Testleri:** Canlı ortama geçiş öncesinde plan tabanlı stres testleri ve AutoMalTool benzeri otomatik kırmızı takım senaryoları koşturulmalıdır.
-5.  **Otomasyon:** Manuel kopyala-yapıştır hatalarını minimize etmek ve spesifikasyon kalitesini artırmak için OpenAPI'den otomatik sunucu üretimi teşvik edilmelidir.
+### 3. Empirical Data
+-   Analysis of 1,899 open-source MCP servers by Hasan et al. (2025) detected:
+    -   7.2% General Vulnerabilities
+    -   5.5% Tool Poisoning Risk
+    -   66% Code Smells
+    -   14.4% Error Patterns
 
-### Kaynakça (18 Çalışma)
-*(Atıflar: Hou 2025; Krishnan 2025; Ehtesham 2025; Hasan 2025; Flotho 2025; Mastouri 2025; Fan 2025; Xing 2025; Song 2025; Luo 2025; Yin 2025; Chhetri 2025; Tokal 2025; He 2025; Singh 2025; Bhandarwar 2025; Coppolino 2025; Korinek 2025.)*
+### 4. Performance & Benchmarks
+-   **MCPGAUGE:** Observed that MCP integration does not provide absolute benefit in every scenario; in some cases, it leads to low proactivity and high cost/overhead ratios.
+-   **MCP-Universe, LiveMCP-101:** Tests on real servers reported success rates below 60% for frontier models, with prominent failures in long-context scenarios and undefined tools.
+-   **MCPToolBench++:** Covering over 4,000 servers, this study identified format diversity and context window constraints as significant bottlenecks.
+
+## Recommendations & Mitigation Strategies
+
+-   **Information Flow Control (IFC) & Taint-tracking:** Should be used to prevent toxic inputs from triggering critical actions.
+-   **Sandboxing:** Tool access must be restricted at file, network, and system command levels; deployment-specific profiles should be created.
+-   **Identity & Transport Security:** TLS/mTLS, OAuth 2.1, and resource indicators must be standardized; scoped and short-lived tokens should be preferred.
+-   **Observability:** Plan-based testing (LiveMCP-101), detailed logging, anomaly tracking, and periodic red teaming exercises should be implemented.
+-   **Supply Chain Security:** Signed packages, version pinning, SBOM usage, and description/schema integrity verifications must be included in processes.
+
+## Comparison of Defense Mechanisms
+
+1.  **CI/CD Integration:** MCP-specific scans including description poisoning, schema consistency, and semantic detection should be added to pipelines.
+2.  **Package Security:** Signed package distribution, version pinning, SBOM generation, and integrity verification at every release must be standardized.
+3.  **Human Approval & Constraints:** Guard models and human approval must be mandatory for high-impact actions; scope/quota limits per tool and scoped credentials should be used.
+4.  **Stress Tests:** Plan-based stress tests and automated red team scenarios (like AutoMalTool) should be run before live deployment.
+5.  **Automation:** Automated server generation from OpenAPI should be encouraged to minimize manual copy-paste errors and improve specification quality.

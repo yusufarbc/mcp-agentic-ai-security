@@ -7,368 +7,461 @@
     <meta name="description"
         content="Academic security review exploring the Model Context Protocol (MCP) ecosystem, architecture, threats, and defense strategies.">
     <title>MCP Agentic Security Review</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap CSS (Local) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <h1>MCP Agentic Security Review</h1>
-            <div class="links">
-                <a href="#about" class="no-underline">About</a>
-                <a href="#documentation" class="no-underline">Documentation</a>
-                <a href="#security" class="no-underline">Security</a>
-                <a href="#media" class="no-underline">Media</a>
-                <a href="#references" class="no-underline">References</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand gradient-text" href="index.html">MCP Agentic Security Review</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#paper">Paper</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#documentation">Documentation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#security">Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#references">References</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main>
+    <!-- Main Content -->
+    <div class="container my-5">
+
         <!-- Hero Section -->
-        <section class="hero">
-            <h2>Academic Security Review of the Model Context Protocol Ecosystem</h2>
-            <p>
+        <section class="hero-section fade-in-up">
+            <h1 class="display-4 fw-bold mb-3">Academic Security Review of the Model Context Protocol Ecosystem</h1>
+            <p class="lead text-muted mb-4">
                 A comprehensive research repository examining the architectural, security, and defense dimensions of
                 MCP.
                 This collection includes academic papers, visual infographics, and in-depth documentation covering
                 threat
                 analysis, benchmarks, and defense strategies for AI agent systems.
             </p>
-            <div style="margin: 2rem 0; display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="https://github.com/yusufarbc/mcp-agentic-ai-security" target="_blank" class="btn no-underline">
-                    <span>⭐</span> View on GitHub
+            <div class="d-flex gap-3 flex-wrap">
+                <a href="https://github.com/yusufarbc/mcp-agentic-ai-security" target="_blank" class="btn btn-gradient">
+                    ⭐ View on GitHub
                 </a>
-                <a href="overview.html" class="btn btn-outline no-underline">
-                    <span>📖</span> Start Reading
+                <a href="overview.html" class="btn btn-outline-primary">
+                    📖 Start Reading
                 </a>
             </div>
-            <div class="hero-meta">
-                <div class="meta-card">
-                    <span>📄 Research Type</span>
-                    <strong>Academic Paper (IEEE Format)</strong>
+
+            <!-- Meta Cards -->
+            <div class="row g-3 mt-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <small class="text-muted text-uppercase">Research Type</small>
+                            <h6 class="mt-2 mb-0">IEEE Format Paper</h6>
+                        </div>
+                    </div>
                 </div>
-                <div class="meta-card">
-                    <span>📚 Documentation</span>
-                    <strong>7 Comprehensive Guides</strong>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <small class="text-muted text-uppercase">Documentation</small>
+                            <h6 class="mt-2 mb-0">7 Comprehensive Guides</h6>
+                        </div>
+                    </div>
                 </div>
-                <div class="meta-card">
-                    <span>🎨 Visual Assets</span>
-                    <strong>5 Infographics & Diagrams</strong>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <small class="text-muted text-uppercase">Visual Assets</small>
+                            <h6 class="mt-2 mb-0">5 Infographics</h6>
+                        </div>
+                    </div>
                 </div>
-                <div class="meta-card">
-                    <span>📑 References</span>
-                    <strong>18 Academic Papers</strong>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <small class="text-muted text-uppercase">References</small>
+                            <h6 class="mt-2 mb-0">18 Academic Papers</h6>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Academic Paper Highlight -->
+        <section id="paper" class="paper-highlight">
+            <h3>📄 Featured Academic Paper</h3>
+            <p class="lead mb-3">
+                <strong>"A Critical Security and Architectural Review of the Model Context Protocol (MCP)
+                    Ecosystem"</strong>
+            </p>
+            <p class="text-muted mb-4">
+                This IEEE-format research paper provides a comprehensive analysis of MCP's architectural paradigms,
+                the "Context Bloat" challenge, the shift to Code Execution paradigm, and the "Lethal Trifecta" of
+                security risks. It synthesizes findings from 18 academic sources and proposes defense-in-depth
+                strategies
+                for securing agentic AI systems.
+            </p>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-3 col-sm-6">
+                    <small class="text-muted d-block">Author</small>
+                    <strong>Yusuf Talha ARABACI</strong>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <small class="text-muted d-block">Institution</small>
+                    <strong>Karabuk University</strong>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <small class="text-muted d-block">Format</small>
+                    <strong>IEEE Conference Paper</strong>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <small class="text-muted d-block">Pages</small>
+                    <strong>6 Pages</strong>
+                </div>
+            </div>
+
+            <div class="d-flex gap-3 flex-wrap">
+                <a href="https://github.com/yusufarbc/mcp-agentic-ai-security/blob/main/paper/paper.pdf" target="_blank"
+                    class="btn btn-gradient">
+                    📥 Download PDF
+                </a>
+
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="glass-panel">
-            <h3>What is the Model Context Protocol (MCP)?</h3>
-            <p>
-                The Model Context Protocol (MCP) is an <strong>open standard</strong> that enables AI models to securely
-                and
-                efficiently interact with external tools and data resources. Think of it as a <strong>"USB-C port for
-                    AI"</strong>
-                — a universal connector that allows any AI application to work with any tool or data source without
-                custom integrations.
-            </p>
-
-            <div class="grid grid-2" style="margin-top: 2rem;">
-                <div class="glass-panel" style="padding:1.5rem">
-                    <h4>🎯 The Challenge</h4>
-                    <p>Before MCP, integrating AI agents with tools required <strong>N × M unique connectors</strong>:
+        <section id="about" class="my-5">
+            <div class="card">
+                <div class="card-body p-4">
+                    <h3 class="card-title">What is the Model Context Protocol (MCP)?</h3>
+                    <p class="card-text">
+                        The Model Context Protocol (MCP) is an <strong>open standard</strong> that enables AI models to
+                        securely
+                        and efficiently interact with external tools and data resources. Think of it as a <strong>"USB-C
+                            port for AI"</strong>
+                        — a universal connector that allows any AI application to work with any tool or data source
+                        without custom integrations.
                     </p>
-                    <ul>
-                        <li><strong>High Maintenance:</strong> Every API change broke integrations</li>
-                        <li><strong>Silos:</strong> Tools built for one platform didn't work on another</li>
-                        <li><strong>Inefficiency:</strong> Redundant work stifled innovation</li>
-                    </ul>
-                </div>
 
-                <div class="glass-panel" style="padding:1.5rem">
-                    <h4>✨ The Solution</h4>
-                    <p>MCP creates a <strong>shared language</strong> for AI-tool communication:</p>
-                    <ul>
-                        <li><strong>Write Once:</strong> Build an MCP server once, use everywhere</li>
-                        <li><strong>Standardized:</strong> JSON-RPC based protocol</li>
-                        <li><strong>Secure:</strong> Built-in governance and access control</li>
-                    </ul>
+                    <div class="row g-4 mt-3">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">🎯 The Challenge</h5>
+                                    <p class="card-text">Before MCP, integrating AI agents with tools required <strong>N
+                                            × M unique connectors</strong>:</p>
+                                    <ul class="mb-0">
+                                        <li><strong>High Maintenance:</strong> Every API change broke integrations</li>
+                                        <li><strong>Silos:</strong> Tools built for one platform didn't work on another
+                                        </li>
+                                        <li><strong>Inefficiency:</strong> Redundant work stifled innovation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">✨ The Solution</h5>
+                                    <p class="card-text">MCP creates a <strong>shared language</strong> for AI-tool
+                                        communication:</p>
+                                    <ul class="mb-0">
+                                        <li><strong>Write Once:</strong> Build an MCP server once, use everywhere</li>
+                                        <li><strong>Standardized:</strong> JSON-RPC based protocol</li>
+                                        <li><strong>Secure:</strong> Built-in governance and access control</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <figure class="mt-4 mb-0">
+                        <img src="images/mcp_architecture.png" alt="MCP Architecture" class="img-fluid">
+                        <figcaption class="text-center text-muted mt-2">
+                            MCP client-server architecture showing the flow between LLMs, clients, and tool servers
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
-
-            <figure style="margin: 2rem 0;">
-                <img src="images/mcp_architecture.png" alt="MCP Architecture"
-                    style="width: 100%; border-radius: 20px; border: 1px solid var(--border);">
-                <figcaption style="text-align: center; margin-top: 0.75rem; color: var(--muted);">
-                    MCP client-server architecture showing the flow between LLMs, clients, and tool servers
-                </figcaption>
-            </figure>
         </section>
 
         <!-- Documentation Section -->
-        <section id="documentation" class="glass-panel">
-            <div class="tag-row">
-                <span class="tag">English</span>
-                <span class="tag">Comprehensive</span>
-                <span class="tag">Academic</span>
-            </div>
-            <h3>Comprehensive Documentation</h3>
-            <p>
-                In-depth guides covering all aspects of the Model Context Protocol, from fundamentals to advanced
-                security
-                considerations. Each document provides detailed analysis backed by academic research and real-world
-                benchmarks.
-            </p>
+        <section id="documentation" class="my-5">
+            <div class="card">
+                <div class="card-body p-4">
+                    <div class="d-flex gap-2 mb-3">
+                        <span class="badge bg-primary">English</span>
+                        <span class="badge bg-secondary">Comprehensive</span>
+                        <span class="badge bg-success">Academic</span>
+                    </div>
+                    <h3 class="card-title">Comprehensive Documentation</h3>
+                    <p class="card-text">
+                        In-depth guides covering all aspects of the Model Context Protocol, from fundamentals to
+                        advanced
+                        security considerations. Each document provides detailed analysis backed by academic research
+                        and real-world benchmarks.
+                    </p>
 
-            <div class="grid grid-2" style="margin-top: 2rem;">
-                <a href="overview.html" class="glass-panel no-underline"
-                    style="padding:1.75rem; display: block; transition: var(--transition);">
-                    <h4 style="margin-top: 0; color: var(--accent-1);">📖 Overview</h4>
-                    <p style="margin-bottom: 0;">Introduction to MCP, the N×M integration problem, and core primitives
-                        (Tools, Resources, Prompts).</p>
-                </a>
-
-                <a href="architecture.html" class="glass-panel no-underline"
-                    style="padding:1.75rem; display: block; transition: var(--transition);">
-                    <h4 style="margin-top: 0; color: var(--accent-1);">🏗️ Architecture</h4>
-                    <p style="margin-bottom: 0;">Client-Host-Server model, transport layers (Stdio, HTTP/SSE), and
-                        AutoMCP automation.</p>
-                </a>
-
-                <a href="security-and-governance.html" class="glass-panel no-underline"
-                    style="padding:1.75rem; display: block; transition: var(--transition);">
-                    <h4 style="margin-top: 0; color: var(--accent-1);">🔒 Security & Governance</h4>
-                    <p style="margin-bottom: 0;">Threat landscape (IPI, Tool Poisoning), defense strategies, and
-                        governance frameworks.</p>
-                </a>
-
-                <a href="performance-and-optimization.html" class="glass-panel no-underline"
-                    style="padding:1.75rem; display: block; transition: var(--transition);">
-                    <h4 style="margin-top: 0; color: var(--accent-1);">⚡ Performance & Optimization</h4>
-                    <p style="margin-bottom: 0;">Context bloat challenges, Code Execution paradigm, and optimization
-                        best practices.</p>
-                </a>
-
-                <a href="use-cases-and-ecosystem.html" class="glass-panel no-underline"
-                    style="padding:1.75rem; display: block; transition: var(--transition);">
-                    <h4 style="margin-top: 0; color: var(--accent-1);">🌐 Use Cases & Ecosystem</h4>
-                    <p style="margin-bottom: 0;">Real-world applications across industries and multi-agent system
-                        patterns.</p>
-                </a>
-
-                <a href="insights-and-future.html" class="glass-panel no-underline"
-                    style="padding:1.75rem; display: block; transition: var(--transition);">
-                    <h4 style="margin-top: 0; color: var(--accent-1);">💡 Insights & Future</h4>
-                    <p style="margin-bottom: 0;">Strategic insights, hybrid architectures, and the future of agentic
-                        systems.</p>
-                </a>
-
-                <a href="literature-review.html" class="glass-panel no-underline"
-                    style="padding:1.75rem; display: block; transition: var(--transition);">
-                    <h4 style="margin-top: 0; color: var(--accent-1);">📚 Literature Review</h4>
-                    <p style="margin-bottom: 0;">Academic context, research findings, and comprehensive bibliography of
-                        18 papers.</p>
-                </a>
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-6">
+                            <a href="overview.html" class="text-decoration-none">
+                                <div class="card card-hover-lift h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">📖 Overview</h5>
+                                        <p class="card-text text-muted mb-0">Introduction to MCP, the N×M integration
+                                            problem, and core primitives (Tools, Resources, Prompts).</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="architecture.html" class="text-decoration-none">
+                                <div class="card card-hover-lift h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">🏗️ Architecture</h5>
+                                        <p class="card-text text-muted mb-0">Client-Host-Server model, transport layers
+                                            (Stdio, HTTP/SSE), and AutoMCP automation.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="security-and-governance.html" class="text-decoration-none">
+                                <div class="card card-hover-lift h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">🔒 Security & Governance</h5>
+                                        <p class="card-text text-muted mb-0">Threat landscape (IPI, Tool Poisoning),
+                                            defense strategies, and governance frameworks.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="performance-and-optimization.html" class="text-decoration-none">
+                                <div class="card card-hover-lift h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">⚡ Performance & Optimization</h5>
+                                        <p class="card-text text-muted mb-0">Context bloat challenges, Code Execution
+                                            paradigm, and optimization best practices.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="use-cases-and-ecosystem.html" class="text-decoration-none">
+                                <div class="card card-hover-lift h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">🌐 Use Cases & Ecosystem</h5>
+                                        <p class="card-text text-muted mb-0">Real-world applications across industries
+                                            and multi-agent system patterns.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="insights-and-future.html" class="text-decoration-none">
+                                <div class="card card-hover-lift h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">💡 Insights & Future</h5>
+                                        <p class="card-text text-muted mb-0">Strategic insights, hybrid architectures,
+                                            and the future of agentic systems.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="literature-review.html" class="text-decoration-none">
+                                <div class="card card-hover-lift h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">📚 Literature Review</h5>
+                                        <p class="card-text text-muted mb-0">Academic context, research findings, and
+                                            comprehensive bibliography of 18 papers.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Security Section -->
-        <section id="security" class="glass-panel">
-            <h3>Security & Threat Landscape</h3>
-            <p>
-                Our research identifies critical security challenges in MCP deployments and provides actionable defense
-                strategies
-                based on analysis of 1,899 servers and multiple benchmark studies.
-            </p>
+        <section id="security" class="my-5">
+            <div class="card">
+                <div class="card-body p-4">
+                    <h3 class="card-title">Security & Threat Landscape</h3>
+                    <p class="card-text">
+                        Our research identifies critical security challenges in MCP deployments and provides actionable
+                        defense
+                        strategies based on analysis of 1,899 servers and multiple benchmark studies.
+                    </p>
 
-            <div class="grid grid-2" style="margin-top: 2rem;">
-                <div class="glass-panel" style="padding:1.75rem">
-                    <h4>🎯 Threat Taxonomy</h4>
-                    <ul>
-                        <li><strong>4 Threat Actors:</strong> Malicious developer, malicious user, external attacker,
-                            software errors</li>
-                        <li><strong>16 Attack Scenarios:</strong> Tool poisoning, prompt injection, input validation
-                            errors</li>
-                        <li><strong>Empirical Findings:</strong> 7.2% vulnerabilities, 5.5% tool poisoning, 66% code
-                            smells</li>
-                        <li><strong>Benchmark Results:</strong> MCPGAUGE, MCPToolBench++, LiveMCP-101, MCP-Universe</li>
-                        <li><strong>Defense Effectiveness:</strong> MCP-Guard achieves 96% detection accuracy</li>
-                    </ul>
+                    <div class="row g-4 mt-3">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">🎯 Threat Taxonomy</h5>
+                                    <ul class="mb-0">
+                                        <li><strong>4 Threat Actors:</strong> Malicious developer, malicious user,
+                                            external attacker, software errors</li>
+                                        <li><strong>16 Attack Scenarios:</strong> Tool poisoning, prompt injection,
+                                            input validation errors</li>
+                                        <li><strong>Empirical Findings:</strong> 7.2% vulnerabilities, 5.5% tool
+                                            poisoning, 66% code smells</li>
+                                        <li><strong>Benchmark Results:</strong> MCPGAUGE, MCPToolBench++, LiveMCP-101,
+                                            MCP-Universe</li>
+                                        <li><strong>Defense Effectiveness:</strong> MCP-Guard achieves 96% detection
+                                            accuracy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">🛡️ Defense Strategies</h5>
+                                    <ul class="mb-0">
+                                        <li><strong>Access Control:</strong> IFC + taint tracking, least privilege,
+                                            sandbox profiles</li>
+                                        <li><strong>Authentication:</strong> TLS/mTLS, OAuth 2.1 + scoped tokens, SBOM
+                                            and signed packages</li>
+                                        <li><strong>Runtime Protection:</strong> Guard models, AutoMalTool red team
+                                            procedures</li>
+                                        <li><strong>Development:</strong> AutoMCP compiler from OpenAPI, plan-based
+                                            tests</li>
+                                        <li><strong>Operations:</strong> MCP scanners for CI/CD, human-approved guard
+                                            flows</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <figure class="mt-4 mb-0">
+                        <img src="images/mcp_threats.png" alt="MCP Threat Landscape" class="img-fluid">
+                        <figcaption class="text-center text-muted mt-2">
+                            Comprehensive threat taxonomy showing 17 attack vectors across the MCP ecosystem
+                        </figcaption>
+                    </figure>
                 </div>
-
-                <div class="glass-panel" style="padding:1.75rem">
-                    <h4>🛡️ Defense Strategies</h4>
-                    <ul>
-                        <li><strong>Access Control:</strong> IFC + taint tracking, least privilege, sandbox profiles
-                        </li>
-                        <li><strong>Authentication:</strong> TLS/mTLS, OAuth 2.1 + scoped tokens, SBOM and signed
-                            packages</li>
-                        <li><strong>Runtime Protection:</strong> Guard models, AutoMalTool red team procedures</li>
-                        <li><strong>Development:</strong> AutoMCP compiler from OpenAPI, plan-based tests</li>
-                        <li><strong>Operations:</strong> MCP scanners for CI/CD, human-approved guard flows</li>
-                    </ul>
-                </div>
-            </div>
-
-            <figure style="margin: 2rem 0;">
-                <img src="images/mcp_threats.png" alt="MCP Threat Landscape"
-                    style="width: 100%; border-radius: 20px; border: 1px solid var(--border);">
-                <figcaption style="text-align: center; margin-top: 0.75rem; color: var(--muted);">
-                    Comprehensive threat taxonomy showing 17 attack vectors across the MCP ecosystem
-                </figcaption>
-            </figure>
-        </section>
-
-        <!-- Media Gallery -->
-        <section id="media" class="glass-panel">
-            <h3>Visual Assets & Infographics</h3>
-            <p>High-quality diagrams and infographics explaining MCP architecture, security threats, and ecosystem
-                overview.</p>
-
-            <div class="grid grid-2" style="margin-top: 2rem;">
-                <figure class="glass-panel" style="padding:1rem;">
-                    <img src="images/mcp_infographic.png" alt="MCP Ecosystem Infographic">
-                    <figcaption><code>mcp_infographic.png</code> — Comprehensive overview of the MCP ecosystem and
-                        standardization</figcaption>
-                </figure>
-
-                <figure class="glass-panel" style="padding:1rem;">
-                    <img src="images/agenticai_infographic.png" alt="Agentic AI Infographic">
-                    <figcaption><code>agenticai_infographic.png</code> — Agent interoperability protocols comparison
-                    </figcaption>
-                </figure>
-
-                <figure class="glass-panel" style="padding:1rem;">
-                    <img src="images/mcp_architecture.png" alt="MCP Architecture">
-                    <figcaption><code>mcp_architecture.png</code> — Detailed client-server architecture diagram
-                    </figcaption>
-                </figure>
-
-                <figure class="glass-panel" style="padding:1rem;">
-                    <img src="images/mcp_threats.png" alt="MCP Threats">
-                    <figcaption><code>mcp_threats.png</code> — Security threat taxonomy and attack vectors</figcaption>
-                </figure>
-
-                <figure class="glass-panel" style="padding:1rem;">
-                    <img src="images/mcp_protocol.png" alt="MCP Protocol">
-                    <figcaption><code>mcp_protocol.png</code> — Protocol communication flow diagram</figcaption>
-                </figure>
             </div>
         </section>
 
         <!-- References Section -->
-        <section id="references" class="glass-panel">
-            <h3>Reference Library (18 Papers)</h3>
-            <p>
-                Curated collection of academic papers covering MCP security, benchmarks, applications, and related
-                research.
-                All papers are available in the <code>reference/</code> folder with detailed abstracts in the README.
-            </p>
+        <section id="references" class="my-5">
+            <div class="card">
+                <div class="card-body p-4">
+                    <h3 class="card-title">Reference Library (18 Papers)</h3>
+                    <p class="card-text">
+                        Curated collection of academic papers covering MCP security, benchmarks, applications, and
+                        related research.
+                        All papers are available in the <code>reference/</code> folder with detailed abstracts in the
+                        README.
+                    </p>
 
-            <div class="grid grid-3" style="margin-top: 2rem;">
-                <div class="glass-panel" style="padding:1.5rem">
-                    <h4>🔒 Security & Defense</h4>
-                    <ul style="font-size: 0.9rem;">
-                        <li>MCP Landscape & Threats</li>
-                        <li>MCP-Guard Framework</li>
-                        <li>Automatic Red Teaming</li>
-                        <li>Security at First Glance</li>
-                    </ul>
-                </div>
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">🔒 Security & Defense</h5>
+                                    <ul class="small mb-0">
+                                        <li>MCP Landscape & Threats</li>
+                                        <li>MCP-Guard Framework</li>
+                                        <li>Automatic Red Teaming</li>
+                                        <li>Security at First Glance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">📊 Benchmarks & Testing</h5>
+                                    <ul class="small mb-0">
+                                        <li>MCPToolBench++</li>
+                                        <li>MCP-Universe</li>
+                                        <li>LiveMCP-101</li>
+                                        <li>MCPGAUGE Analysis</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">🌐 Applications & Ecosystem</h5>
+                                    <ul class="small mb-0">
+                                        <li>Multi-Agent Systems</li>
+                                        <li>Agent Interoperability</li>
+                                        <li>MCPmed Bioinformatics</li>
+                                        <li>Economic Research Agents</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="glass-panel" style="padding:1.5rem">
-                    <h4>📊 Benchmarks & Testing</h4>
-                    <ul style="font-size: 0.9rem;">
-                        <li>MCPToolBench++</li>
-                        <li>MCP-Universe</li>
-                        <li>LiveMCP-101</li>
-                        <li>MCPGAUGE Analysis</li>
-                    </ul>
-                </div>
-
-                <div class="glass-panel" style="padding:1.5rem">
-                    <h4>🌐 Applications & Ecosystem</h4>
-                    <ul style="font-size: 0.9rem;">
-                        <li>Multi-Agent Systems</li>
-                        <li>Agent Interoperability</li>
-                        <li>MCPmed Bioinformatics</li>
-                        <li>Economic Research Agents</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="margin-top: 2rem; text-align: center;">
-                <a href="https://github.com/yusufarbc/mcp-agentic-ai-security/tree/main/reference" target="_blank"
-                    class="btn btn-outline no-underline">
-                    Browse All References on GitHub →
-                </a>
-            </div>
-        </section>
-
-        <!-- Repository Structure -->
-        <section class="glass-panel">
-            <h3>Repository Structure</h3>
-            <div class="grid grid-3">
-                <div class="glass-panel" style="padding:1.5rem">
-                    <h4>📄 paper/</h4>
-                    <p>LaTeX source files for the academic paper in IEEE format, including compilation outputs and
-                        bibliography.</p>
-                    <ul style="font-size: 0.9rem;">
-                        <li><code>paper.tex</code> - Main document</li>
-                        <li><code>paper.pdf</code> - Compiled output</li>
-                        <li><code>protocol.png</code> - Figure asset</li>
-                    </ul>
-                </div>
-
-                <div class="glass-panel" style="padding:1.5rem">
-                    <h4>📚 docs/</h4>
-                    <p>Markdown documentation files that serve as the source for the HTML documentation pages.</p>
-                    <ul style="font-size: 0.9rem;">
-                        <li>7 comprehensive guides</li>
-                        <li>English language</li>
-                        <li>Academic rigor</li>
-                    </ul>
-                </div>
-
-                <div class="glass-panel" style="padding:1.5rem">
-                    <h4>📑 reference/</h4>
-                    <p>Collection of 18 academic papers with abstracts and summaries in the README.</p>
-                    <ul style="font-size: 0.9rem;">
-                        <li>Numbered 01-18</li>
-                        <li>PDF format</li>
-                        <li>Detailed abstracts</li>
-                    </ul>
+                    <div class="text-center mt-4">
+                        <a href="https://github.com/yusufarbc/mcp-agentic-ai-security/tree/main/reference"
+                            target="_blank" class="btn btn-outline-primary">
+                            Browse All References on GitHub →
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action -->
-        <section class="glass-panel" style="text-align: center;">
-            <h3>Get Started</h3>
-            <p style="max-width: 700px; margin: 0 auto 2rem;">
-                Explore the comprehensive documentation, review the academic papers, and contribute to advancing MCP
-                security research.
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="overview.html" class="btn no-underline">
-                    📖 Read Documentation
-                </a>
-                <a href="https://github.com/yusufarbc/mcp-agentic-ai-security" target="_blank"
-                    class="btn btn-outline no-underline">
-                    ⭐ Star on GitHub
-                </a>
+        <section class="text-center my-5">
+            <div class="card">
+                <div class="card-body p-5">
+                    <h3 class="card-title">Get Started</h3>
+                    <p class="card-text mx-auto" style="max-width: 700px;">
+                        Explore the comprehensive documentation, review the academic papers, and contribute to advancing
+                        MCP
+                        security research.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap mt-4">
+                        <a href="overview.html" class="btn btn-gradient">
+                            📖 Read Documentation
+                        </a>
+                        <a href="https://github.com/yusufarbc/mcp-agentic-ai-security" target="_blank"
+                            class="btn btn-outline-primary">
+                            ⭐ Star on GitHub
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <p class="footer-note">
-            This repository serves as an academic resource for MCP security research. All content is maintained in
-            English
-            and follows IEEE/ACM academic standards.
-        </p>
-    </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">
+                This repository serves as an academic resource for MCP security research. All content is maintained in
+                English
+                and follows IEEE/ACM academic standards.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle (Local) -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

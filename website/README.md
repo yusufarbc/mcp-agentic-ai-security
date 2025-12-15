@@ -43,10 +43,6 @@ website/
 - ✅ Fast loading with optimized assets
 - ✅ SEO-friendly structure
 
-## Local Development
+## Accessing the Content
+The website is static and self-contained. You can view the full research documentation locally by opening `index.html` in any standard web browser.
 
-Simply open `index.html` in a web browser. All dependencies are local, so no build process or server is required.
-
-## Deployment
-
-The site is designed to work with GitHub Pages. Just push to the `main` branch and enable GitHub Pages in repository settings.

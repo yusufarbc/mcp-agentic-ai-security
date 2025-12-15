@@ -1,89 +1,42 @@
 # MCP Agentic AI Security Review
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Documentation](https://img.shields.io/badge/docs-comprehensive-blue)](docs/)
-[![Status](https://img.shields.io/badge/status-active-success)](https://github.com/yusufarbc/mcp-agentic-ai-security)
+[![Research Archive](https://img.shields.io/badge/Type-Research_Archive-blueviolet.svg)](https://yusufarbc.github.io/mcp-agentic-ai-security/)
 
-## 📖 Overview
+**This repository serves as a permanent research archive for the critical security analysis of the Model Context Protocol (MCP) ecosystem.** It aggregates theoretical architectures, threat models, empirical benchmarks, and an accompanying IEEE-format research paper.
 
-**MCP Agentic AI Security Review** is a comprehensive academic repository dedicated to analyzing the **Model Context Protocol (MCP)** ecosystem. As AI agents evolve from passive chatbots to autonomous systems capable of executing code and manipulating data, the need for a standardized, secure communication layer has never been clearer.
+## 📄 Abstract
 
-This repository aggregates architectural analysis, security research, threat modeling, and defense strategies for MCP-enabled systems. It serves as a central hub for researchers, developers, and security engineers to understand the "N×M" integration problem and the security implications of agentic interoperability.
+The Model Context Protocol (MCP), introduced in late 2024, marks a significant turning point in the evolution of Large Language Models (LLMs). By standardizing the interface between AI agents and external data, MCP seeks to dismantle the "N × M" integration barrier. However, this capabilities upgrade introduces a "Lethal Trifecta" of security risks: Data Access, Internet Connectivity, and Action Capability. This research archive critically synthesizes the emerging ecosystem, analyzing the shift towards a "Code Execution Paradigm" and proposing necessary governance frameworks to ensure the ecosystem matures securely.
 
-🔗 **Live Documentation:** [https://yusufarbc.github.io/mcp-agentic-ai-security/](https://yusufarbc.github.io/mcp-agentic-ai-security/)
+🔗 **Live Research Blog:** [https://yusufarbc.github.io/mcp-agentic-ai-security/](https://yusufarbc.github.io/mcp-agentic-ai-security/)
 
-## ✨ Key Features
+## 📂 Research Materials
 
-*   **Architectural Deep Dive:** Detailed breakdown of the Client-Host-Server model, transport layers (stdio/SSE), and auto-generation tools like AutoMCP.
-*   **Security Research:** Comprehensive threat taxonomy including Indirect Prompt Injection (IPI), Tool Poisoning, and Supply Chain attacks.
-*   **Literature Review:** Curated collection of academic papers (IEEE/ACM) and empirical benchmarks (MCPGAUGE, LiveMCP-101).
-*   **Visual Assets:** High-quality diagrams and infographics explaining the MCP ecosystem (available in `website/images`).
-*   **Academic Paper:** Full LaTeX source for the accompanying research paper in `paper/`.
+This repository is organized as a structured collection of research artifacts:
 
-## 📂 Repository Structure
+*   **`paper/`**: Contains the full **LaTeX source** and compiled **PDF** of the research paper ("A Critical Security and Architectural Review of the MCP Ecosystem").
+*   **`docs/`**: A comprehensive series of markdown documents detailing:
+    *   *Architecture:* Core primitives and transport layers.
+    *   *Security:* Threat taxonomy (Indirect Prompt Injection, Tool Poisoning).
+    *   *Performance:* Analysis of "Context Bloat" and optimization strategies.
+*   **`reference/`**: curated bibliography of 18 key academic papers and specifications referenced in the study.
+*   **`website/`**: Source files for the accompanying visualization and documentation site.
 
+## 🎓 Citation
+
+If you use findings from this repository in your own research, please cite the accompanying paper:
+
+```bibtex
+@inproceedings{arabaci2025critical,
+  title={A Critical Security and Architectural Review of the Model Context Protocol (MCP) Ecosystem},
+  author={Arabaci, Yusuf Talha},
+  booktitle={Karabuk University Research Archives},
+  year={2025},
+  url={https://github.com/yusufarbc/mcp-agentic-ai-security}
+}
 ```
-├── docs/                   # Comprehensive markdown documentation
-│   ├── 01-overview.md      # Protocol fundamentals
-│   ├── 02-architecture.md  # Technical architecture
-│   ├── 03-security.md      # Threat landscape & defenses
-│   └── ...                 # Performance, Use Cases, Literature
-├── paper/                  # LaTeX source for the academic paper (IEEE format)
-├── reference/              # Collected academic papers and PDFs
-├── website/                # Source code for the documentation website
-│   ├── index.html          # Main landing page
-│   ├── pages/              # Individual documentation pages
-│   └── images/             # Diagrams and Infographics
-├── LICENSE                 # MIT License
-├── CONTRIBUTING.md         # Contribution guidelines
-└── README.md               # Project entry point
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-*   **Reading:** Start with the [Overview](docs/01-overview.md) to understand the core concepts.
-*   **Website:** Visit the [Live Site](https://yusufarbc.github.io/mcp-agentic-ai-security/) for an interactive experience.
-*   **LaTeX (Optional):** To compile the academic paper, you need a standard TeX distribution (TeX Live, MiKTeX).
-
-### Compilation (Academic Paper)
-
-To generate the PDF from the LaTeX source:
-
-```bash
-cd paper
-pdflatex paper.tex
-bibtex paper
-pdflatex paper.tex
-pdflatex paper.tex
-```
-
-## 📊 Visuals & Architecture
-
-### The MCP Standard
-![MCP Standard](website/images/mcp_infographic.png)
-*MCP positions itself as the "USB-C for AI," standardizing how agents connect to tools and data.*
-
-### Client-Server Architecture
-![Architecture](website/images/mcp_architecture.png)
-*A clear separation of concerns: The Host manages the User/Agent, while the Server manages Tool/Resource logic.*
-
-### Threat Landscape
-![Threats](website/images/mcp_threats.png)
-*The "Lethal Trifecta" of Data, Action, and Internet access creates new attack surfaces like Tool Poisoning.*
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting a Pull Request.
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📚 References
-
-The `reference/` directory contains a curated list of papers cited in this project. See [reference/Readme.md](reference/Readme.md) for abstracts and details.
-
----
-*Maintained by Yusuf Talha ARABACI*
+The content of this research repository is open-sourced under the **MIT License**. You are free to use, modify, and distribute the materials with appropriate attribution.

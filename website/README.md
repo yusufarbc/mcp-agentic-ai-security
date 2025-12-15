@@ -12,11 +12,10 @@ website/
 ├── js/
 │   └── bootstrap.bundle.min.js  # Bootstrap JS with Popper (local)
 ├── images/
+│   ├── agenticai_infographic.png
 │   ├── mcp_architecture.png
 │   ├── mcp_infographic.png
-│   ├── mcp_protocol.png
-│   ├── mcp_threats.png
-│   └── agenticai_infographic.png
+│   └── mcp_threats_infographic.png
 ├── index.html                # Main landing page
 ├── overview.html             # MCP Overview
 ├── architecture.html         # Architecture details

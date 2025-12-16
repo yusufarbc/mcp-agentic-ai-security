@@ -22,6 +22,8 @@ This repository is organized as a structured collection of research artifacts:
     *   *Performance:* Analysis of "Context Bloat" and optimization strategies.
 *   **`reference/`**: curated bibliography of 18 key academic papers and specifications referenced in the study.
 *   **`website/`**: Source files for the accompanying visualization and documentation site.
+*   **`community-mcp-examples/`**: A collection of community-contributed MCP implementations including:
+    *   **CodeExecutionWithMCP**: An example implementation for code execution with MCP, originally by [Yazilimcikisi](https://github.com/yazilimcikisi/CodeExecutionWithMCP).
 
 ## 🎓 Citation
 

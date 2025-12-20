@@ -11,7 +11,7 @@ This is a minimal example of an MCP server using the `fastmcp` library. It expos
 
 1. Navigate to this directory:
    ```bash
-   cd fastmcp-example
+   cd mcp-examples/fastmcp-example
    ```
 
 2. Install the required dependencies:

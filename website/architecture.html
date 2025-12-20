@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Detailed analysis of the MCP Client-Host-Server architecture, transport layers (Stdio, HTTP/SSE), and server lifecycle.">
+    <meta name="keywords"
+        content="MCP Architecture, Client-Host-Server, Stdio Transport, HTTP SSE, AutoMCP, AI Architecture">
     <title>MCP Architecture - MCP Agentic Security Review</title>
 
     <!-- Bootstrap CSS (Local) -->
@@ -64,6 +68,7 @@
                                 <a class="nav-link text-muted py-1" href="#transport">Transport Layers</a>
                                 <a class="nav-link text-muted py-1" href="#lifecycle">Server Lifecycle</a>
                                 <a class="nav-link text-muted py-1" href="#automcp">AutoMCP Automation</a>
+                                <a class="nav-link text-muted py-1" href="#performance">Performance & Opt</a>
                             </nav>
                         </div>
                     </div>
@@ -193,6 +198,96 @@
                                     instantly.
                                 </div>
                             </div>
+                        </section>
+
+                        <section id="performance" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Performance & Optimization</h2>
+
+                            <h4 class="h5 mt-4">The Latency Challenge</h4>
+                            <p class="lead">While MCP standardizes connection, it introduces a significant engineering
+                                challenge: <strong>Context Bloat</strong>.</p>
+
+                            <div class="card bg-light border-0 mb-4">
+                                <div class="card-body">
+                                    <h5 class="h6 fw-bold">The Problem: "Context Pollution"</h5>
+                                    <p class="small mb-2">When an agent connects to an MCP server, it typically loads:
+                                    </p>
+                                    <ol class="small mb-3">
+                                        <li><strong>Tool Definitions:</strong> Schemas describing every tool.</li>
+                                        <li><strong>Results:</strong> Full output of every tool call.</li>
+                                        <li><strong>History:</strong> The entire dialogue.</li>
+                                    </ol>
+                                    <div class="d-flex gap-3 text-danger small fw-bold">
+                                        <span>📉 236x Token Increase</span>
+                                        <span>🐢 High Latency</span>
+                                        <span>😕 Confusion</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4 class="h5 mt-4">The Solution: "Code Execution" Paradigm</h4>
+                            <p>To solve this, the industry is shifting from <strong>Direct Tool Calling</strong> to a
+                                <strong>Code Execution</strong> (or "Code Mode") model.
+                            </p>
+
+                            <div class="table-responsive mb-4">
+                                <table class="table table-bordered">
+                                    <thead class="bg-light">
+                                        <tr>
+                                            <th>Feature</th>
+                                            <th>Direct Tool Calling</th>
+                                            <th>Code Execution Paradigm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Mechanism</strong></td>
+                                            <td>LLM outputs JSON to call tool.</td>
+                                            <td>LLM writes a script to call tools.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Context</strong></td>
+                                            <td><span class="text-danger fw-bold">High</span> (Schemas + Results)</td>
+                                            <td><span class="text-success fw-bold">Low</span> (Just libraries)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Efficiency</strong></td>
+                                            <td>150,000 tokens (Example)</td>
+                                            <td><strong>2,000 tokens (98.7% Less)</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="row g-0 border rounded overflow-hidden mb-4">
+                                <div class="col-md-6 p-4 border-end bg-light">
+                                    <h6 class="text-muted text-uppercase small fw-bold mb-3">Old Way (Direct)</h6>
+                                    <blockquote class="blockquote fs-6 mb-0">
+                                        "I will call <code>read_file</code> for 'data.csv', then I will call
+                                        <code>filter_data</code>, then I will call <code>summarize</code>."
+                                    </blockquote>
+                                </div>
+                                <div class="col-md-6 p-4">
+                                    <h6 class="text-primary text-uppercase small fw-bold mb-3">New Way (Code)</h6>
+                                    <pre class="bg-light text-dark p-3 rounded small mb-0 border"><code># Agent-generated code
+import pandas as pd
+from mcp_tools import fs
+
+# Read & Process in ONE go!
+df = pd.read_csv(fs.get_path("data.csv"))
+print(df.describe())</code></pre>
+                                </div>
+                            </div>
+
+                            <h4 class="h5 mt-4">Optimization Best Practices</h4>
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item"><strong>Limit Context:</strong> Use "router" agents to
+                                    select toolsets; don't dump everything at once.</li>
+                                <li class="list-group-item"><strong>Summarization:</strong> Summarize tool outputs
+                                    before adding to history.</li>
+                                <li class="list-group-item"><strong>Prefer Code Mode:</strong> For data-heavy tasks,
+                                    write and execute code instead of API calls.</li>
+                            </ol>
                         </section>
 
                         <div class="d-flex justify-content-between mt-5 pt-4 border-top">

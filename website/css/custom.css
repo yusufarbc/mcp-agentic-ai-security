@@ -290,7 +290,7 @@ pre {
 pre code {
     background: none;
     border: none;
-    color: var(--text-dark);
+    color: inherit;
 }
 
 /* ===== Images ===== */

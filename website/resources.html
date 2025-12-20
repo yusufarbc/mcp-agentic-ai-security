@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Ecosystem Resources - MCP Agentic Security Review</title>
+
+    <!-- Bootstrap CSS (Local) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand gradient-text" href="index.html">MCP Agentic Security Review</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="overview.html">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="architecture.html">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="security-and-governance.html">Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="literature-review.html">Literature</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="resources.html">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="examples.html">Examples</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 order-lg-2 mb-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h6 class="card-title text-uppercase text-muted small fw-bold">Quick Links</h6>
+                            <nav class="nav flex-column small">
+                                <a class="nav-link text-muted py-1" href="#official">Official Docs</a>
+                                <a class="nav-link text-muted py-1" href="#sdks">SDKs & Repos</a>
+                                <a class="nav-link text-muted py-1" href="#academic">Academic & Security</a>
+                                <a class="nav-link text-muted py-1" href="#marketplaces">Marketplaces</a>
+                                <a class="nav-link text-muted py-1" href="#integrations">Integrations</a>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h6 class="card-title text-uppercase text-muted small fw-bold">Contribute</h6>
+                            <p class="card-text small">Found a useful resource? Submit a PR!</p>
+                            <a href="https://github.com/yusufarbc/mcp-agentic-ai-security" target="_blank"
+                                class="btn btn-sm btn-outline-primary w-100 mb-2">GitHub Repo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Column -->
+            <div class="col-lg-9 order-lg-1">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Resources</li>
+                    </ol>
+                </nav>
+
+                <article class="card shadow-sm border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <h1 class="display-5 fw-bold mb-4 gradient-text">MCP Ecosystem Resources</h1>
+                        <p class="lead mb-5">A curated collection of official documentation, community tools, academic
+                            research, and server directories to help you navigate and build within the Model Context
+                            Protocol ecosystem.</p>
+
+                        <!-- Section: Official Documentation -->
+                        <section id="official" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Resmî Dokümantasyon ve Duyurular</h2>
+                            <div class="list-group">
+                                <a href="https://modelcontextprotocol.io/" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Resmî Web Sitesi</h5>
+                                        <small>modelcontextprotocol.io</small>
+                                    </div>
+                                    <p class="mb-1">The central hub for all things MCP.</p>
+                                </a>
+                                <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Resmî Tanıtım Yazısı</h5>
+                                        <small>Anthropic News</small>
+                                    </div>
+                                    <p class="mb-1">Official announcement and vision for the protocol.</p>
+                                </a>
+                                <a href="https://modelcontextprotocol.io/specification/2025-06-18" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Protokol Spesifikasyonu (Sürüm 2025-06-18)</h5>
+                                        <small>Spec</small>
+                                    </div>
+                                    <p class="mb-1">Technical specification detailing the JSON-RPC message
+                                        implementation.</p>
+                                </a>
+                                <a href="https://modelcontextprotocol.io/quickstart/user" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">MCP Bağlantı Klavuzu (Claude Masaüstü)</h5>
+                                        <small>Quickstart</small>
+                                    </div>
+                                    <p class="mb-1">Guide for end-users to connect MCP servers to Claude Desktop.</p>
+                                </a>
+                                <a href="https://modelcontextprotocol.io/examples" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">MCP Örnekleri ve Rehberleri</h5>
+                                        <small>Examples</small>
+                                    </div>
+                                    <p class="mb-1">Official examples to help developers get started.</p>
+                                </a>
+                                <a href="https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"
+                                    target="_blank" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">MCP'nin Linux Foundation'a Bağışlanması Duyurusu</h5>
+                                        <small>News</small>
+                                    </div>
+                                    <p class="mb-1">Announcement regarding the open-sourcing and governance foundation.
+                                    </p>
+                                </a>
+                                <a href="https://www.anthropic.com/engineering/code-execution-with-mcp" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Kod Yürütme (Code Execution) ve Verimlilik Blogu</h5>
+                                        <small>Engineering Blog</small>
+                                    </div>
+                                    <p class="mb-1">Deep dive into efficiency and code execution patterns with MCP.</p>
+                                </a>
+                            </div>
+                        </section>
+
+                        <!-- Section: SDKs -->
+                        <section id="sdks" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Yazılım Geliştirme Kitleri (SDK) ve Depolar</h2>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 bg-light">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><a
+                                                    href="https://github.com/modelcontextprotocol/python-sdk"
+                                                    target="_blank" class="text-decoration-none">Resmî Python SDK</a>
+                                            </h5>
+                                            <p class="card-text small text-muted">The official Python library for
+                                                building MCP servers and clients.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 bg-light">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><a
+                                                    href="https://modelcontextprotocol.github.io/typescript-sdk/"
+                                                    target="_blank" class="text-decoration-none">TypeScript SDK Web
+                                                    Sayfası</a></h5>
+                                            <p class="card-text small text-muted">Documentation for the official
+                                                TypeScript/Node.js SDK.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 bg-light">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><a
+                                                    href="https://github.com/modelcontextprotocol/servers"
+                                                    target="_blank" class="text-decoration-none">Resmî Sunucu
+                                                    Koleksiyonu</a></h5>
+                                            <p class="card-text small text-muted">A repository of reference
+                                                implementations for various services.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 bg-light">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><a
+                                                    href="https://github.com/modelcontextprotocol/registry"
+                                                    target="_blank" class="text-decoration-none">Topluluk Kayıt Defteri
+                                                    (Registry)</a></h5>
+                                            <p class="card-text small text-muted">Central registry for
+                                                community-submitted MCP servers.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Section: Academic -->
+                        <section id="academic" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Akademik Çalışmalar ve Tehdit Analizleri</h2>
+                            <p class="text-muted mb-3">Key research papers that analyze the security and performance of
+                                MCP.</p>
+                            <div class="list-group">
+                                <a href="https://arxiv.org/abs/2503.23278" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <strong>Temel Güvenlik ve Manzara Analizi (arXiv:2503.23278)</strong>
+                                </a>
+                                <a href="https://arxiv.org/abs/2504.11094" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <strong>MCP Değerlendirme Raporu (arXiv:2504.11094)</strong>
+                                </a>
+                                <a href="https://arxiv.org/abs/2508.10991" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <strong>MCP-Guard Savunma Çerçevesi (arXiv:2508.10991)</strong>
+                                </a>
+                                <a href="https://arxiv.org/abs/2508.15760" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <strong>LiveMCP-101 Stres Testi (arXiv:2508.15760)</strong>
+                                </a>
+                                <a href="https://arxiv.org/abs/2508.14704" target="_blank"
+                                    class="list-group-item list-group-item-action">
+                                    <strong>MCP-Universe Karşılaştırma Paketi (arXiv:2508.14704)</strong>
+                                </a>
+                            </div>
+                        </section>
+
+                        <!-- Section: Marketplaces -->
+                        <section id="marketplaces" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Pazar Yerleri ve Sunucu Dizinleri</h2>
+                            <p class="text-muted mb-3">Discover existing MCP servers and tools created by the community.
+                            </p>
+                            <div class="row g-3 text-center">
+                                <div class="col-md-4 col-sm-6">
+                                    <a href="https://smithery.ai/" target="_blank"
+                                        class="btn btn-outline-dark w-100 py-3">Smithery</a>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <a href="https://glama.ai/mcp" target="_blank"
+                                        class="btn btn-outline-dark w-100 py-3">Glama</a>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <a href="https://mcp.so/" target="_blank"
+                                        class="btn btn-outline-dark w-100 py-3">MCP.so</a>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <a href="https://www.pulsemcp.com" target="_blank"
+                                        class="btn btn-outline-dark w-100 py-3">PulseMCP</a>
+                                </div>
+                                <div class="col-md-8 col-sm-12">
+                                    <a href="https://docs.docker.com/ai/mcp-catalog-and-toolkit/catalog/"
+                                        target="_blank" class="btn btn-outline-dark w-100 py-3">Docker MCP Kataloğu</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Section: Integrations -->
+                        <section id="integrations" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Entegrasyon Örnekleri ve Araçlar</h2>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Integration</th>
+                                            <th>Type</th>
+                                            <th>Link</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>GitHub</td>
+                                            <td>Server</td>
+                                            <td><a href="https://github.com/modelcontextprotocol/servers/tree/main/src/github"
+                                                    target="_blank">Official Source</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Slack</td>
+                                            <td>Server</td>
+                                            <td><a href="https://github.com/modelcontextprotocol/servers/tree/main/src/slack"
+                                                    target="_blank">Official Source</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Postgres</td>
+                                            <td>Server</td>
+                                            <td><a href="https://github.com/modelcontextprotocol/servers/tree/main/src/postgres"
+                                                    target="_blank">Official Source</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>OpenAI</td>
+                                            <td>Guide</td>
+                                            <td><a href="https://platform.openai.com/docs/mcp" target="_blank">Platform
+                                                    Docs</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>MS Copilot Studio</td>
+                                            <td>Announcement</td>
+                                            <td><a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/introducing-model-context-protocol-mcp-in-copilot-studio-simplified-integration-with-ai-apps-and-agents/"
+                                                    target="_blank">Blog Post</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">
+                This repository serves as an academic resource for MCP security research. All content is maintained in
+                English
+                and follows academic standards.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle (Local) -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

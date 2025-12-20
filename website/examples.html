@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Servers - MCP Agentic Security Review</title>
+
+    <!-- Bootstrap CSS (Local) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand gradient-text" href="index.html">MCP Agentic Security Review</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="overview.html">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="architecture.html">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="security-and-governance.html">Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="literature-review.html">Literature</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="examples.html">Examples</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 order-lg-2 mb-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h6 class="card-title text-uppercase text-muted small fw-bold">Jump To</h6>
+                            <nav class="nav flex-column small">
+                                <a class="nav-link text-muted py-1" href="#reference">Reference Implementation</a>
+                                <a class="nav-link text-muted py-1" href="#integrations">Integrations</a>
+                                <a class="nav-link text-muted py-1" href="#community">Community</a>
+                                <a class="nav-link text-muted py-1" href="#getting-started">Getting Started</a>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h6 class="card-title text-uppercase text-muted small fw-bold">Try it out</h6>
+                            <p class="card-text small">Use these examples to build your own MCP servers.</p>
+                            <a href="https://github.com/modelcontextprotocol/servers" target="_blank"
+                                class="btn btn-sm btn-gradient w-100 mb-2">View Official Repo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Column -->
+            <div class="col-lg-9 order-lg-1">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Examples</li>
+                    </ol>
+                </nav>
+
+                <article class="card shadow-sm border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <h1 class="display-5 fw-bold mb-4 gradient-text">Example Servers</h1>
+                        <p class="lead mb-5">A curated list of example servers and implementations that showcase the
+                            Model Context Protocol's capabilities. These servers enable LLMs to securely access tools
+                            and data sources.</p>
+
+                        <!-- Section: Reference Implementations -->
+                        <section id="reference" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Reference Implementations</h2>
+                            <p>Official reference servers demonstrating core features and SDK usage:</p>
+
+                            <div class="list-group mb-4">
+                                <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/everything"
+                                    target="_blank" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Everything</h5>
+                                    </div>
+                                    <p class="mb-1 text-muted">Reference / test server with prompts, resources, and
+                                        tools.</p>
+                                </a>
+                                <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/fetch"
+                                    target="_blank" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Fetch</h5>
+                                    </div>
+                                    <p class="mb-1 text-muted">Web content fetching and conversion for efficient LLM
+                                        usage.</p>
+                                </a>
+                                <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem"
+                                    target="_blank" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Filesystem</h5>
+                                    </div>
+                                    <p class="mb-1 text-muted">Secure file operations with configurable access controls.
+                                    </p>
+                                </a>
+                                <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/git"
+                                    target="_blank" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Git</h5>
+                                    </div>
+                                    <p class="mb-1 text-muted">Tools to read, search, and manipulate Git repositories.
+                                    </p>
+                                </a>
+                                <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory"
+                                    target="_blank" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Memory</h5>
+                                    </div>
+                                    <p class="mb-1 text-muted">Knowledge graph-based persistent memory system.</p>
+                                </a>
+                                <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking"
+                                    target="_blank" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Sequential Thinking</h5>
+                                    </div>
+                                    <p class="mb-1 text-muted">Dynamic and reflective problem-solving through thought
+                                        sequences.</p>
+                                </a>
+                                <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/time"
+                                    target="_blank" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Time</h5>
+                                    </div>
+                                    <p class="mb-1 text-muted">Time and timezone conversion capabilities.</p>
+                                </a>
+                            </div>
+
+                            <div class="alert alert-secondary">
+                                <strong>Archived Examples:</strong> Visit the <a
+                                    href="https://github.com/modelcontextprotocol/servers-archived"
+                                    class="alert-link">servers-archived repository</a> for older examples provided for
+                                historical reference.
+                            </div>
+                        </section>
+
+                        <!-- Section: Official Integrations -->
+                        <section id="integrations" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Official Integrations</h2>
+                            <p>
+                                Maintained by companies for their platforms. See the
+                                <a href="https://github.com/modelcontextprotocol/servers?tab=readme-ov-file#%EF%B8%8F-official-integrations"
+                                    target="_blank">Official Integrations list</a>.
+                            </p>
+                        </section>
+
+                        <!-- Section: Community Implementations -->
+                        <section id="community" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Community Implementations</h2>
+                            <p>
+                                Maintained by the broader community. See the
+                                <a href="https://github.com/modelcontextprotocol/servers?tab=readme-ov-file#-community-servers"
+                                    target="_blank">Community Servers list</a>.
+                            </p>
+                        </section>
+
+                        <!-- Section: Getting Started -->
+                        <section id="getting-started" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Getting Started</h2>
+
+                            <h4 class="h5 mt-4">Using Reference Servers</h4>
+                            <p><strong>TypeScript</strong> (via npx):</p>
+                            <div class="bg-dark rounded p-3 mb-3">
+                                <code class="text-light">npx -y @modelcontextprotocol/server-memory</code>
+                            </div>
+
+                            <p><strong>Python</strong> (via uvx or pip):</p>
+                            <div class="bg-dark rounded p-3 mb-3">
+                                <pre class="text-light mb-0"><code># Using uvx
+uvx mcp-server-git
+
+# Using pip
+pip install mcp-server-git
+python -m mcp_server_git</code></pre>
+                            </div>
+
+                            <h4 class="h5 mt-4">Configuring with Claude</h4>
+                            <p>Add servers to your Claude configuration file:</p>
+                            <div class="bg-dark rounded p-3 mb-3">
+                                <pre class="text-light mb-0"><code>{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/path/to/allowed/files"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "&lt;YOUR_TOKEN&gt;"
+      }
+    }
+  }
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Section: Additional Resources -->
+                        <section id="additional" class="mb-5">
+                            <h2 class="h3 text-primary mb-3">Additional Resources</h2>
+                            <ul>
+                                <li><a href="https://github.com/modelcontextprotocol/servers?tab=readme-ov-file#-resources"
+                                        target="_blank">MCP Servers Repository Use Cases</a></li>
+                                <li><a href="https://github.com/orgs/modelcontextprotocol/discussions"
+                                        target="_blank">GitHub Discussions</a></li>
+                            </ul>
+                        </section>
+
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">
+                This repository serves as an academic resource for MCP security research. All content is maintained in
+                English
+                and follows academic standards.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle (Local) -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

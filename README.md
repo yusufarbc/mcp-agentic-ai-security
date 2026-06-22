@@ -63,19 +63,6 @@ This repository is organized as a structured collection of research artifacts:
 *   [OpenAI MCP Guide](https://platform.openai.com/docs/mcp)
 *   [Microsoft Copilot Studio Integration](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/introducing-model-context-protocol-mcp-in-copilot-studio-simplified-integration-with-ai-apps-and-agents/)
 
-## 🎓 Citation
-
-If you use findings from this repository in your own research, please cite the accompanying paper:
-
-```bibtex
-@inproceedings{arabaci2025critical,
-  title={A Critical Security and Architectural Review of the Model Context Protocol (MCP) Ecosystem},
-  author={Arabaci, Yusuf Talha},
-  booktitle={Karabuk University Research Archives},
-  year={2025},
-  url={https://github.com/yusufarbc/mcp-agentic-ai-security}
-}
-```
 
 ## 📜 License
 

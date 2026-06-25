@@ -1,6 +1,6 @@
 # MCP and Related Works – Literature Summary
 
-This directory contains key academic papers and specifications referenced in the study.
+This directory contains key academic papers and specifications referenced in the study. Each PDF has a companion `.md` file with an auto-extracted full text (via `pdftotext`) for quick search/reading — figures, tables, and layout are only preserved in the PDF.
 
 ## 1. Model Context Protocol (MCP): Landscape, Security Threats, and Future Research Directions
 **Authors:** Hou, X. et al. (2025, arXiv:2503.23278)

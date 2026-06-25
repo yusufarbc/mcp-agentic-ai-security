@@ -4,6 +4,14 @@
 
 Empowering AI agents to interact with the real world introduces a "Lethal Trifecta" of security risks: **Data Access**, **Untrusted Content Exposure**, and **External Action Capability**. Traditional security models (like perimeter defense) are insufficient for autonomous agents.
 
+### Threat Taxonomy
+
+Empirical analysis of the ecosystem classifies risk along two axes:
+*   **4 Threat Actors:** Malicious developer, malicious user, external attacker, and software/configuration errors.
+*   **16 Attack Scenarios:** Spanning the server lifecycle, including tool poisoning and prompt injection variants.
+*   **Empirical Findings (n=1,899 servers):** 7.2% general vulnerabilities, 5.5% tool poisoning risk, 66% code-smell/maintainability issues.
+*   **Benchmark Coverage:** MCPGAUGE, MCPToolBench++, LiveMCP-101, and MCP-Universe each stress-test a different slice of this taxonomy.
+
 ### Key Threat Vectors
 
 #### 1. Indirect Prompt Injection (IPI)
@@ -42,6 +50,13 @@ Security in an agentic world requires multiple layers of protection.
 ### 4. Input/Output Filtering
 *   **Sanitization:** Strictly validate all inputs to tool calls against their JSON schemas.
 *   **Egress Filtering:** Monitor and block agents from sending data to unauthorized domains.
+
+### 5. Authentication, Supply Chain & Runtime Defenses
+*   **Scoped Authentication:** TLS/mTLS in transit, OAuth 2.1 with audience-scoped tokens to prevent Confused-Deputy attacks.
+*   **Supply Chain Integrity:** SBOMs (Software Bill of Materials) and signed packages for server distribution.
+*   **Guard Models:** Dedicated detection layers — e.g., MCP-Guard reports ~96% accuracy detecting prompt injection and tool poisoning in benchmark evaluations.
+*   **Automated Red Teaming:** Tools like AutoMalTool generate adversarial MCP servers to probe defenses before deployment.
+*   **CI/CD Scanning:** MCP-aware static scanners integrated into build pipelines, paired with human-approved guard flows for high-risk merges.
 
 ## Governance Frameworks
 

@@ -11,3 +11,6 @@ This directory contains detailed research notes and analysis on the Model Contex
 *   **[05-use-cases-and-ecosystem.md](05-use-cases-and-ecosystem.md)**: Real-world use cases and the broader ecosystem.
 *   **[06-insights-and-future.md](06-insights-and-future.md)**: Key insights and future research directions.
 *   **[07-literature.md](07-literature.md)**: Comprehensive literature review context.
+*   **[08-examples.md](08-examples.md)**: Practical integration examples.
+*   **[09-gap-analysis-tr.md](09-gap-analysis-tr.md)**: Original-language (Turkish) literature gap analysis from the source research archive.
+*   **[TR-MCP-Ekosistemi.md](TR-MCP-Ekosistemi.md)**: Auto-extracted text companion to `TR-MCP-Ekosistemi.pdf` (Turkish).

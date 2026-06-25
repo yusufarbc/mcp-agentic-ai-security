@@ -1,0 +1,17 @@
+{
+  "name": "mcp-security-review-showcase",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --port 3030",
+    "build": "slidev build --base /mcp-agentic-ai-security/",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.0",
+    "@slidev/theme-default": "^0.25.0",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.60.0"
+  }
+}

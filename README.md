@@ -9,19 +9,20 @@
 
 The Model Context Protocol (MCP), introduced in late 2024, marks a significant turning point in the evolution of Large Language Models (LLMs). By standardizing the interface between AI agents and external data, MCP seeks to dismantle the "N × M" integration barrier. However, this capabilities upgrade introduces a "Lethal Trifecta" of security risks: Data Access, Internet Connectivity, and Action Capability. This research archive critically synthesizes the emerging ecosystem, analyzing the shift towards a "Code Execution Paradigm" and proposing necessary governance frameworks to ensure the ecosystem matures securely.
 
-🔗 **Live Research Blog:** [https://yusufarbc.github.io/mcp-agentic-ai-security/](https://yusufarbc.github.io/mcp-agentic-ai-security/)
+🔗 **Live Conference Presentation:** [https://yusufarbc.github.io/mcp-agentic-ai-security/](https://yusufarbc.github.io/mcp-agentic-ai-security/)
 
 ## 📂 Research Materials
 
 This repository is organized as a structured collection of research artifacts:
 
 *   **`paper/`**: Contains the full **LaTeX source** and compiled **PDF** of the research paper ("A Critical Security and Architectural Review of the MCP Ecosystem").
+*   **`showcase/`**: [Slidev](https://sli.dev/) source for the conference presentation of the paper. This is what's published to GitHub Pages.
 *   **`docs/`**: A comprehensive series of markdown documents detailing:
     *   *Architecture:* Core primitives and transport layers.
     *   *Security:* Threat taxonomy (Indirect Prompt Injection, Tool Poisoning).
     *   *Performance:* Analysis of "Context Bloat" and optimization strategies.
 *   **`reference/`**: curated bibliography of 18 key academic papers and specifications referenced in the study.
-*   **`website/`**: Source files for the accompanying visualization and documentation site.
+*   **`media/`**: Supplementary visuals from the original research archive.
 *   **`community-mcp-examples/`**: A collection of community-contributed MCP implementations including:
     *   **CodeExecutionWithMCP**: An example implementation for code execution with MCP, originally by [Yazilimcikisi](https://github.com/yazilimcikisi/CodeExecutionWithMCP).
 

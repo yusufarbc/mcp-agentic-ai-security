@@ -44,3 +44,7 @@ Adopting MCP moves the industry from a fragmented ecosystem of bespoke connector
 *   **Tool Builders** to write one integration that works everywhere.
 *   **Agent Developers** to access a vast library of pre-built tools.
 *   **Enterprises** to securely govern AI access to internal data.
+
+## Further Watching
+
+*   [MCP Explanation (YouTube)](https://www.youtube.com/watch?v=3uWttx3Erb8) — a third-party visual walkthrough of MCP's architecture and standardization of AI agent interactions.

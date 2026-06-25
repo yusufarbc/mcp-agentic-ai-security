@@ -183,9 +183,9 @@ class: compact-slide
 ## Host–Client–Server Handshake
 ### Connection Lifecycle
 
-<div class="flex flex-col justify-center items-center mt-2">
+<div class="flex flex-col justify-center items-center">
 
-```mermaid {scale: 0.85}
+```mermaid {scale: 0.62}
 %%{init: {"theme": "base", "themeVariables": {"titleColor": "#1e293b", "textColor": "#1e293b", "primaryTextColor": "#1e293b", "background": "#ffffff"}}}%%
 sequenceDiagram
   participant H as Host (LLM App)

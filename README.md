@@ -3,6 +3,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Research Archive](https://img.shields.io/badge/Type-Research_Archive-blueviolet.svg)](https://yusufarbc.github.io/mcp-agentic-ai-security/)
 
+> [!NOTE]
+> This repository is **archived** and read-only. The materials are preserved as-is for reference.
+
 **This repository serves as a permanent research archive for the critical security analysis of the Model Context Protocol (MCP) ecosystem.** It aggregates theoretical architectures, threat models, empirical benchmarks, and an accompanying IEEE-format research paper.
 
 ## 📄 Abstract
@@ -23,8 +26,9 @@ This repository is organized as a structured collection of research artifacts:
     *   *Performance:* Analysis of "Context Bloat" and optimization strategies.
 *   **`reference/`**: curated bibliography of 18 key academic papers and specifications referenced in the study.
 *   **`media/`**: Supplementary visuals from the original research archive.
-*   **`community-mcp-examples/`**: A collection of community-contributed MCP implementations including:
+*   **`mcp-examples/`**: Small MCP example implementations:
     *   **CodeExecutionWithMCP**: An example implementation for code execution with MCP, originally by [Yazilimcikisi](https://github.com/yazilimcikisi/CodeExecutionWithMCP).
+    *   **fastmcp-example**: A minimal Python MCP server built with FastMCP.
 
 ## 🌍 Ecosystem Resources
 

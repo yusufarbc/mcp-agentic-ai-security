@@ -182,3 +182,11 @@ node_modules/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+# LaTeX build artifacts
+*.aux
+*.out
+*.log
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls

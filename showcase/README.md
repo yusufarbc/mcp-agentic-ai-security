@@ -34,7 +34,7 @@ The presentation will be available at `http://localhost:3030`.
 
 ## Building and Deployment
 
-The slides are automatically compiled and deployed to **GitHub Pages** on every push to the `main` branch via the GitHub Action workflow:
+The slides were compiled and deployed to **GitHub Pages** via the GitHub Action workflow (the repository is now archived, so the published site is frozen at its last deployment):
 
 - Workflow file: `.github/workflows/deploy.yml`
 - Production build command: `npm run build` (builds with `--base /mcp-agentic-ai-security/` to match the Pages project path)
